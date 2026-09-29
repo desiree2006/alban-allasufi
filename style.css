@@ -1,7 +1,17 @@
 /* =========================
    RESET
 ========================= */
+.logo img {
+    width: 55px;
+    height: auto;
+    display: block;
+}
 
+.footer-logo img {
+    width: 45px;
+    height: auto;
+    display: block;
+}
 * {
     margin: 0;
     padding: 0;
