@@ -1,133 +1,554 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Progetti Architettonici</title>
+<title>ARCHÉ — Progetti 3D</title>
 
-<!-- Collegamento al CSS -->
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-HEADER / LOGO
-========================== -->
+<!-- ================================
+LOGO FISSO
+================================= -->
 
-<header class="header">
 <img
 src="IMG_6998.jpeg"
-alt="Logo"
-class="logo"
+alt="ARCHÉ"
+class="fixed-logo"
 >
+
+
+<!-- ================================
+HEADER ORIGINALE
+================================= -->
+
+<header>
+
+<div class="logo">ARCHÉ</div>
+
+<nav class="nav">
+<a href="#progetti">PROGETTI</a>
+<a href="#3d">3D EXPERIENCE</a>
+<a href="#">COME FUNZIONA</a>
+<a href="#">ACCEDI</a>
+</nav>
+
 </header>
 
 
-<!-- =========================
-VIDEO PRINCIPALE
-========================== -->
-
 <main>
+
+
+<!-- ================================
+HERO ORIGINALE
+================================= -->
+
+<section class="hero">
+
+<div>
+
+<div class="eyebrow">
+ARCHITECTURE · DIGITAL MARKETPLACE
+</div>
+
+<h1>
+La tua casa,
+<br>
+<i>prima di costruirla.</i>
+</h1>
+
+<p>
+Scopri, esplora e acquista progetti architettonici
+attraverso planimetrie dettagliate e un'esperienza
+3D immersiva.
+</p>
+
+<a class="btn" href="#progetti">
+ESPLORA I PROGETTI →
+</a>
+
+</div>
+
+
+<!-- MODELLO 3D ORIGINALE -->
+
+<div class="stage">
+
+<div class="house" id="house">
+
+<div class="floor"></div>
+
+<div class="room r1">
+CAMERA
+</div>
+
+<div class="room r2">
+CUCINA
+</div>
+
+<div class="room r3">
+LIVING
+</div>
+
+<div class="room r4">
+BAGNO
+</div>
+
+<div class="back"></div>
+
+<div class="roof"></div>
+
+</div>
+
+
+<div class="stageLabel">
+MODELLO 3D · VILLA N.01
+</div>
+
+
+<div class="controls">
+
+<button onclick="rotate(-1)">
+↶
+</button>
+
+<button onclick="rotate(1)">
+↷
+</button>
+
+<button onclick="resetView()">
+RESET
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+VIDEO
+================================= -->
 
 <section class="video-section">
 
+<div class="video-container">
+
 <video
-class="video-principale"
 autoplay
 muted
 loop
 playsinline
 controls
 >
+
 <source
 src="canva-video-export_isz5E5MZ.mp4"
 type="video/mp4"
 >
 
-Il tuo browser non supporta la riproduzione del video.
+Il tuo browser non supporta il video.
+
 </video>
 
+</div>
+
 </section>
 
 
-<!-- =========================
-INTRODUZIONE
-========================== -->
+<!-- ================================
+PROGETTI ORIGINALI
+================================= -->
 
-<section class="introduzione">
+<section id="progetti">
 
-<h1>Progetti Architettonici</h1>
+<div class="sectionTitle">
+
+<h2>
+Progetti in evidenza
+</h2>
+
+<span>
+PLANIMETRIE + 3D + DOCUMENTAZIONE
+</span>
+
+</div>
+
+
+<div class="cards">
+
+
+<!-- VILLA LINEA -->
+
+<article class="card">
+
+<div class="thumb">
+
+<div class="miniHouse"></div>
+
+</div>
+
+<div class="cardbody">
+
+<h3>
+Villa Linea
+</h3>
+
+<div class="meta">
+
+<span>
+145 m²
+</span>
+
+<span>
+3 camere
+</span>
+
+<span>
+2 bagni
+</span>
+
+</div>
+
+<div class="price">
+€ 890
+</div>
+
+</div>
+
+</article>
+
+
+<!-- CASA COURTYARD -->
+
+<article class="card">
+
+<div class="thumb">
+
+<div
+class="miniHouse"
+style="width:125px;height:130px">
+</div>
+
+</div>
+
+<div class="cardbody">
+
+<h3>
+Casa Courtyard
+</h3>
+
+<div class="meta">
+
+<span>
+118 m²
+</span>
+
+<span>
+2 camere
+</span>
+
+<span>
+2 bagni
+</span>
+
+</div>
+
+<div class="price">
+€ 740
+</div>
+
+</div>
+
+</article>
+
+
+<!-- URBAN HOUSE -->
+
+<article class="card">
+
+<div class="thumb">
+
+<div
+class="miniHouse"
+style="width:175px;height:90px">
+</div>
+
+</div>
+
+<div class="cardbody">
+
+<h3>
+Urban House
+</h3>
+
+<div class="meta">
+
+<span>
+96 m²
+</span>
+
+<span>
+2 camere
+</span>
+
+<span>
+1 bagno
+</span>
+
+</div>
+
+<div class="price">
+€ 620
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+GALLERIA DELLE 10 IMMAGINI
+================================= -->
+
+<section class="gallery-section">
+
+<div class="sectionTitle">
+
+<h2>
+Dettagli dei progetti
+</h2>
+
+<span>
+DISEGNI E PLANIMETRIE
+</span>
+
+</div>
+
+
+<div class="gallery">
+
+
+<div class="gallery-item">
+<img src="immagine%20(1).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(2).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(3).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(4).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(5).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(6).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(7).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(8).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(9).png" alt="">
+</div>
+
+
+<div class="gallery-item">
+<img src="immagine%20(10).png" alt="">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+SEZIONE 3D ORIGINALE
+================================= -->
+
+<section id="3d">
+
+<div class="viewer">
+
+
+<div class="plan">
+
+<svg
+width="420"
+height="320"
+viewBox="0 0 420 320"
+aria-label="planimetria"
+>
+
+<rect
+x="20"
+y="20"
+width="380"
+height="280"
+fill="#fff"
+stroke="#222"
+stroke-width="7"
+/>
+
+<line
+x1="210"
+y1="20"
+x2="210"
+y2="185"
+stroke="#222"
+stroke-width="6"
+/>
+
+<line
+x1="20"
+y1="185"
+x2="400"
+y2="185"
+stroke="#222"
+stroke-width="6"
+/>
+
+<line
+x1="290"
+y1="185"
+x2="290"
+y2="300"
+stroke="#222"
+stroke-width="6"
+/>
+
+<text
+x="65"
+y="110"
+font-size="15"
+>
+CAMERA
+</text>
+
+<text
+x="285"
+y="110"
+font-size="15"
+>
+CUCINA
+</text>
+
+<text
+x="75"
+y="250"
+font-size="15"
+>
+LIVING
+</text>
+
+<text
+x="315"
+y="250"
+font-size="15"
+>
+BAGNO
+</text>
+
+</svg>
+
+</div>
+
+
+<div class="info">
+
+<span class="tag">
+DA 2D A 3D
+</span>
+
+<h2>
+Non vendere solo una pianta.
+</h2>
 
 <p>
-Scopri i nostri progetti e tutti i dettagli
-dei disegni architettonici.
+Fai vedere al cliente come potrebbe vivere
+quello spazio. La piattaforma può collegare
+la planimetria tecnica a un modello 3D
+navigabile, con materiali, arredi e viste
+delle stanze.
 </p>
 
-</section>
+<a
+class="btn darkbtn"
+href="#progetti"
+>
+VEDI UN PROGETTO
+</a>
 
-
-<!-- =========================
-GALLERIA DISEGNI
-========================== -->
-
-<section class="galleria">
-
-<div class="immagine">
-<img src="immagine (1).png" alt="Disegno architettonico 1">
 </div>
 
-<div class="immagine">
-<img src="immagine (2).png" alt="Disegno architettonico 2">
-</div>
-
-<div class="immagine">
-<img src="immagine (3).png" alt="Disegno architettonico 3">
-</div>
-
-<div class="immagine">
-<img src="immagine (4).png" alt="Disegno architettonico 4">
-</div>
-
-<div class="immagine">
-<img src="immagine (5).png" alt="Disegno architettonico 5">
-</div>
-
-<div class="immagine">
-<img src="immagine (6).png" alt="Disegno architettonico 6">
-</div>
-
-<div class="immagine">
-<img src="immagine (7).png" alt="Disegno architettonico 7">
-</div>
-
-<div class="immagine">
-<img src="immagine (8).png" alt="Disegno architettonico 8">
-</div>
-
-<div class="immagine">
-<img src="immagine (9).png" alt="Disegno architettonico 9">
-</div>
-
-<div class="immagine">
-<img src="immagine (10).png" alt="Disegno architettonico 10">
 </div>
 
 </section>
+
 
 </main>
 
 
-<!-- =========================
-FOOTER
-========================== -->
+<!-- ================================
+JAVASCRIPT 3D ORIGINALE
+================================= -->
 
-<footer class="footer">
-<p>© 2026 - Progetti Architettonici</p>
-</footer>
+<script>
+
+let rot = 0;
+
+function rotate(dir) {
+
+rot += dir * 25;
+
+document.getElementById("house").style.transform =
+`rotateX(59deg) rotateZ(${-34 + rot}deg)`;
+
+}
+
+
+function resetView() {
+
+rot = 0;
+
+document.getElementById("house").style.transform =
+"rotateX(59deg) rotateZ(-34deg)";
+
+}
+
+</script>
+
 
 </body>
-
 </html>
