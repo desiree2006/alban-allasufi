@@ -1,10 +1,18 @@
+:root {
+--bg: #f4f2ee;
+--ink: #171717;
+--muted: #73706a;
+--card: #fff;
+--line: #ddd8d0;
+--accent: #a88963;
+}
+
+
 /* =====================================
 IMPOSTAZIONI GENERALI
 ===================================== */
 
 * {
-margin: 0;
-padding: 0;
 box-sizing: border-box;
 }
 
@@ -13,241 +21,865 @@ scroll-behavior: smooth;
 }
 
 body {
-font-family: Arial, Helvetica, sans-serif;
-background: #f5f5f5;
-color: #222;
+margin: 0;
+
+font-family: Inter, Arial, sans-serif;
+
+background: var(--bg);
+color: var(--ink);
 }
 
 
 /* =====================================
-HEADER / LOGO
+LOGO FISSO IN ALTO A SINISTRA
 ===================================== */
 
-.header {
-width: 100%;
-background: #ffffff;
+.fixed-logo {
 
-display: flex;
-justify-content: center;
-align-items: center;
+position: fixed;
 
-padding: 25px 20px;
-}
+top: 16px;
+left: 18px;
 
-.logo {
-width: 180px;
-max-width: 100%;
-height: auto;
-display: block;
+width: 55px;
+height: 55px;
+
+object-fit: contain;
+
+z-index: 1000;
+
+background: white;
+
+padding: 5px;
+
+border-radius: 5px;
 }
 
 
 /* =====================================
-VIDEO PRINCIPALE
+HEADER ORIGINALE
+===================================== */
+
+header {
+
+height: 76px;
+
+padding: 0 6vw;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-between;
+
+border-bottom: 1px solid var(--line);
+
+background: #f8f6f2;
+}
+
+
+.logo {
+
+font-weight: 800;
+
+letter-spacing: .16em;
+
+font-size: 18px;
+}
+
+
+.nav {
+
+display: flex;
+
+gap: 28px;
+
+font-size: 13px;
+}
+
+
+.nav a {
+
+color: inherit;
+
+text-decoration: none;
+}
+
+
+/* =====================================
+HERO ORIGINALE
+===================================== */
+
+.hero {
+
+min-height: 690px;
+
+padding: 65px 6vw 50px;
+
+display: grid;
+
+grid-template-columns: 42% 58%;
+
+gap: 20px;
+
+align-items: center;
+}
+
+
+.eyebrow {
+
+font-size: 11px;
+
+letter-spacing: .2em;
+
+color: var(--accent);
+
+font-weight: 700;
+}
+
+
+.hero h1 {
+
+font-size: clamp(46px, 6vw, 86px);
+
+line-height: .93;
+
+margin: 18px 0;
+}
+
+
+.hero p {
+
+font-size: 17px;
+
+line-height: 1.6;
+
+color: var(--muted);
+
+max-width: 480px;
+}
+
+
+/* =====================================
+BOTTONI
+===================================== */
+
+.btn {
+
+display: inline-block;
+
+margin-top: 18px;
+
+background: #171717;
+
+color: white;
+
+padding: 15px 24px;
+
+border-radius: 4px;
+
+text-decoration: none;
+
+font-size: 13px;
+}
+
+
+/* =====================================
+MODELLO 3D
+===================================== */
+
+.stage {
+
+height: 560px;
+
+position: relative;
+
+perspective: 1000px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+overflow: hidden;
+}
+
+
+.house {
+
+width: 430px;
+
+height: 300px;
+
+position: relative;
+
+transform-style: preserve-3d;
+
+transform:
+rotateX(59deg)
+rotateZ(-34deg);
+
+transition: transform .7s;
+}
+
+
+.floor {
+
+position: absolute;
+
+inset: 0;
+
+background: #d9d1c5;
+
+border: 2px solid #918678;
+
+box-shadow: 0 35px 60px #0002;
+}
+
+
+.room {
+
+position: absolute;
+
+border: 2px solid #777066;
+
+background: #eee9e1;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+
+font-size: 12px;
+
+font-weight: 700;
+
+color: #615b54;
+}
+
+
+.r1 {
+
+left: 0;
+
+top: 0;
+
+width: 48%;
+
+height: 55%;
+}
+
+
+.r2 {
+
+right: 0;
+
+top: 0;
+
+width: 52%;
+
+height: 55%;
+}
+
+
+.r3 {
+
+left: 0;
+
+bottom: 0;
+
+width: 58%;
+
+height: 45%;
+}
+
+
+.r4 {
+
+right: 0;
+
+bottom: 0;
+
+width: 42%;
+
+height: 45%;
+}
+
+
+.wall {
+
+position: absolute;
+
+background: #b8aea1;
+}
+
+
+.back {
+
+width: 430px;
+
+height: 300px;
+
+transform: translateZ(95px);
+
+background:
+linear-gradient(
+145deg,
+#ded8ce,
+#aaa092
+);
+
+opacity: .98;
+}
+
+
+.roof {
+
+position: absolute;
+
+left: 20px;
+
+top: -75px;
+
+width: 390px;
+
+height: 270px;
+
+background: #8e8579;
+
+transform:
+rotateX(72deg)
+translateZ(70px);
+
+clip-path:
+polygon(
+50% 0,
+100% 30%,
+100% 100%,
+0 100%,
+0 30%
+);
+
+opacity: .9;
+}
+
+
+/* =====================================
+ETICHETTA MODELLO
+===================================== */
+
+.stageLabel {
+
+position: absolute;
+
+bottom: 24px;
+
+left: 50%;
+
+transform: translateX(-50%);
+
+background: #fff;
+
+padding: 10px 16px;
+
+border: 1px solid var(--line);
+
+font-size: 11px;
+
+letter-spacing: .08em;
+}
+
+
+/* =====================================
+CONTROLLI 3D
+===================================== */
+
+.controls {
+
+position: absolute;
+
+right: 24px;
+
+bottom: 22px;
+
+display: flex;
+
+gap: 8px;
+}
+
+
+.controls button {
+
+border: 1px solid var(--line);
+
+background: #fff;
+
+padding: 10px 13px;
+
+border-radius: 4px;
+
+cursor: pointer;
+}
+
+
+/* =====================================
+VIDEO
 ===================================== */
 
 .video-section {
+
 width: 100%;
-background: #000000;
+
+padding: 35px 6vw 75px;
 
 display: flex;
+
 justify-content: center;
+
 align-items: center;
 }
 
-.video-principale {
+
+.video-container {
+
+width: 70%;
+
+max-width: 900px;
+
+margin: 0 auto;
+
+background: #000;
+
+border-radius: 6px;
+
+overflow: hidden;
+
+box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
+}
+
+
+.video-container video {
+
 width: 100%;
-max-width: 1600px;
 
 height: auto;
-max-height: 80vh;
 
 display: block;
-
-object-fit: contain;
 }
 
 
 /* =====================================
-INTRODUZIONE
+SEZIONI
 ===================================== */
 
-.introduzione {
-text-align: center;
+section {
 
-padding: 60px 20px 40px;
-
-background: #f5f5f5;
+padding: 75px 6vw;
 }
 
-.introduzione h1 {
-font-size: 36px;
-font-weight: 600;
 
-margin-bottom: 15px;
+.sectionTitle {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: end;
+
+margin-bottom: 30px;
 }
 
-.introduzione p {
-font-size: 18px;
-color: #666666;
 
-max-width: 700px;
+.sectionTitle h2 {
+
+font-size: 40px;
+
+margin: 0;
+}
+
+
+.sectionTitle span {
+
+color: var(--muted);
+
+font-size: 13px;
+}
+
+
+/* =====================================
+CARDS ORIGINALI
+===================================== */
+
+.cards {
+
+display: grid;
+
+grid-template-columns:
+repeat(3, 1fr);
+
+gap: 18px;
+}
+
+
+.card {
+
+background: var(--card);
+
+border: 1px solid var(--line);
+
+overflow: hidden;
+}
+
+
+.thumb {
+
+height: 230px;
+
+background: #ddd5c9;
+
+position: relative;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+
+
+.miniHouse {
+
+width: 150px;
+
+height: 105px;
+
+background: #ece8e0;
+
+border: 2px solid #8d8377;
+
+transform:
+skewY(-15deg)
+rotate(-8deg);
+
+box-shadow:
+20px 20px 0 #b6aa9a;
+}
+
+
+.cardbody {
+
+padding: 22px;
+}
+
+
+.card h3 {
+
+margin: 0 0 8px;
+
+font-size: 19px;
+}
+
+
+.meta {
+
+font-size: 12px;
+
+color: var(--muted);
+
+display: flex;
+
+gap: 12px;
+}
+
+
+.price {
+
+margin-top: 20px;
+
+font-weight: 800;
+}
+
+
+/* =====================================
+GALLERIA DELLE 10 FOTO
+===================================== */
+
+.gallery-section {
+
+padding-top: 40px;
+}
+
+
+.gallery {
+
+display: grid;
+
+grid-template-columns:
+repeat(2, 1fr);
+
+gap: 20px;
+
+max-width: 1200px;
+
 margin: 0 auto;
+}
+
+
+.gallery-item {
+
+background: white;
+
+border: 1px solid var(--line);
+
+overflow: hidden;
+
+border-radius: 4px;
+
+transition:
+transform .3s ease,
+box-shadow .3s ease;
+}
+
+
+.gallery-item img {
+
+width: 100%;
+
+height: auto;
+
+display: block;
+}
+
+
+.gallery-item:hover {
+
+transform: translateY(-4px);
+
+box-shadow:
+0 12px 30px rgba(0, 0, 0, .12);
+}
+
+
+/* =====================================
+SEZIONE VIEWER 3D ORIGINALE
+===================================== */
+
+.viewer {
+
+margin-top: 55px;
+
+background: #171717;
+
+color: #fff;
+
+min-height: 520px;
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+}
+
+
+.plan {
+
+padding: 45px;
+
+display: flex;
+
+align-items: center;
+
+justify-content: center;
+}
+
+
+.plan svg {
+
+max-width: 100%;
+
+background: #f3f0ea;
+}
+
+
+.info {
+
+padding: 55px;
+
+display: flex;
+
+flex-direction: column;
+
+justify-content: center;
+}
+
+
+.info p {
+
+color: #bdb8b0;
 
 line-height: 1.6;
 }
 
 
+.tag {
+
+display: inline-block;
+
+border: 1px solid #555;
+
+padding: 7px 10px;
+
+font-size: 10px;
+
+letter-spacing: .12em;
+
+width: max-content;
+}
+
+
+.darkbtn {
+
+background: #fff;
+
+color: #171717;
+}
+
+
 /* =====================================
-GALLERIA
+TABLET / MOBILE
 ===================================== */
 
-.galleria {
+@media (max-width: 850px) {
+
+.hero {
+
+grid-template-columns: 1fr;
+
+min-height: auto;
+}
+
+
+.stage {
+
+height: 430px;
+}
+
+
+.cards {
+
+grid-template-columns: 1fr;
+}
+
+
+.gallery {
+
+grid-template-columns: 1fr;
+}
+
+
+.viewer {
+
+grid-template-columns: 1fr;
+}
+
+
+.nav {
+
+display: none;
+}
+
+
+.video-container {
+
 width: 90%;
-max-width: 1300px;
+}
 
-margin: 0 auto;
-
-padding: 20px 0 70px;
-
-display: grid;
-
-grid-template-columns: repeat(2, 1fr);
-
-gap: 25px;
 }
 
 
 /* =====================================
-SINGOLA IMMAGINE
-===================================== */
-
-.immagine {
-width: 100%;
-background: #ffffff;
-
-overflow: hidden;
-
-border-radius: 8px;
-
-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-
-transition: transform 0.3s ease,
-box-shadow 0.3s ease;
-}
-
-.immagine img {
-width: 100%;
-height: auto;
-
-display: block;
-
-transition: transform 0.4s ease;
-}
-
-
-/* Effetto quando passi sopra con il mouse */
-
-.immagine:hover {
-transform: translateY(-4px);
-
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.immagine:hover img {
-transform: scale(1.02);
-}
-
-
-/* =====================================
-FOOTER
-===================================== */
-
-.footer {
-width: 100%;
-
-background: #222222;
-color: #ffffff;
-
-text-align: center;
-
-padding: 25px 20px;
-
-font-size: 14px;
-}
-
-
-/* =====================================
-VERSIONE TABLET
-===================================== */
-
-@media (max-width: 900px) {
-
-.logo {
-width: 150px;
-}
-
-.introduzione {
-padding: 45px 20px 30px;
-}
-
-.introduzione h1 {
-font-size: 30px;
-}
-
-.galleria {
-width: 92%;
-gap: 18px;
-}
-}
-
-
-/* =====================================
-VERSIONE TELEFONO
+TELEFONO
 ===================================== */
 
 @media (max-width: 600px) {
 
-.header {
-padding: 18px 15px;
+.fixed-logo {
+
+width: 45px;
+
+height: 45px;
+
+top: 10px;
+
+left: 10px;
 }
 
-.logo {
-width: 130px;
+
+header {
+
+height: 65px;
 }
 
-.video-principale {
+
+.hero {
+
+padding-top: 45px;
+}
+
+
+.hero h1 {
+
+font-size: 48px;
+}
+
+
+.house {
+
+transform:
+scale(.75)
+rotateX(59deg)
+rotateZ(-34deg);
+}
+
+
+.video-section {
+
+padding: 20px 15px 50px;
+}
+
+
+.video-container {
+
 width: 100%;
-max-height: none;
 }
 
-.introduzione {
-padding: 35px 18px 25px;
+
+.sectionTitle {
+
+display: block;
 }
 
-.introduzione h1 {
-font-size: 25px;
+
+.sectionTitle span {
+
+display: block;
+
+margin-top: 10px;
 }
 
-.introduzione p {
-font-size: 16px;
+
+.sectionTitle h2 {
+
+font-size: 30px;
 }
 
-.galleria {
-width: 94%;
+
+.gallery {
 
 grid-template-columns: 1fr;
 
-gap: 18px;
-
-padding-bottom: 45px;
+gap: 15px;
 }
 
-.immagine {
-border-radius: 6px;
-}
-
-.footer {
-font-size: 13px;
-}
 }
