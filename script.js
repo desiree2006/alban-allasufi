@@ -1,18 +1,88 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    /* =====================================
+       VIDEO: RIPRODUZIONE AUTOMATICA
+    ===================================== */
+
     const video = document.querySelector(".hero-video");
 
     if (video) {
-        video.play().catch(() => {
+        video.play().catch(function () {
             console.log("Autoplay bloccato dal browser.");
         });
     }
 
-});
 
-orm = `translateX(-${currentIndex * 100}%)`;
+    /* =====================================
+       GALLERIA: ELEMENTI HTML
+    ===================================== */
 
-        slides.forEach((slide, index) => {
+    const carousel = document.querySelector(".gallery-carousel");
+
+    if (!carousel) {
+        console.warn("Galleria non trovata nell'HTML.");
+        return;
+    }
+
+    const viewport = carousel.querySelector(".gallery-viewport");
+    const track = carousel.querySelector(".gallery-track");
+
+    const slides = track
+        ? Array.from(track.querySelectorAll(".gallery-slide"))
+        : [];
+
+    const prevButton =
+        carousel.querySelector("#gallery-prev") ||
+        carousel.querySelector(".gallery-prev");
+
+    const nextButton =
+        carousel.querySelector("#gallery-next") ||
+        carousel.querySelector(".gallery-next");
+
+    const progress = document.querySelector(".gallery-progress-bar");
+
+    const counter =
+        document.querySelector("#gallery-counter") ||
+        document.querySelector("#my-counter");
+
+    if (
+        !viewport ||
+        !track ||
+        slides.length === 0 ||
+        !prevButton ||
+        !nextButton
+    ) {
+        console.error(
+            "Galleria: controlla gli ID dei pulsanti e le classi nell'HTML."
+        );
+        return;
+    }
+
+
+    /* =====================================
+       STATO DELLA GALLERIA
+    ===================================== */
+
+    let currentIndex = 0;
+
+    let startX = 0;
+    let startY = 0;
+    let deltaX = 0;
+
+    let dragging = false;
+    let horizontalGesture = false;
+
+
+    /* =====================================
+       AGGIORNAMENTO DELLA GALLERIA
+    ===================================== */
+
+    function updateGallery() {
+
+        track.style.transform =
+            `translateX(-${currentIndex * 100}%)`;
+
+        slides.forEach(function (slide, index) {
             slide.setAttribute(
                 "aria-hidden",
                 index === currentIndex ? "false" : "true"
@@ -22,66 +92,84 @@ orm = `translateX(-${currentIndex * 100}%)`;
         prevButton.disabled = currentIndex === 0;
         nextButton.disabled = currentIndex === slides.length - 1;
 
-        prevButton.style.opacity = currentIndex === 0 ? "0.4" : "1";
+        prevButton.style.opacity =
+            currentIndex === 0 ? "0.4" : "1";
+
         nextButton.style.opacity =
             currentIndex === slides.length - 1 ? "0.4" : "1";
-(() => {
-    const carousel = document.querySelector(".gallery-carousel");
-    if (!carousel) return;
 
-    const viewport = carousel.querySelector(".gallery-viewport");
-    const track = carousel.querySelector(".gallery-track");
-    const slides = Array.from(track.children);
-    const prev = carousel.querySelector(".gallery-prev");
-    const next = carousel.querySelector(".gallery-next");
-    const progress = document.querySelector(".gallery-progress-bar");
+        if (progress) {
+            progress.style.width =
+                `${((currentIndex + 1) / slides.length) * 100}%`;
+        }
 
-    let index = 0;
-    let startX = 0;
-    let startY = 0;
-    let deltaX = 0;
-    let dragging = false;
-    let horizontalGesture = false;
-
-    function update() {
-        track.style.transform = `translateX(-${index * 100}%)`;
-
-        slides.forEach((slide, i) => {
-            slide.setAttribute("aria-hidden", String(i !== index));
-        });
-
-        prev.disabled = index === 0;
-        next.disabled = index === slides.length - 1;
-
-        progress.style.width =
-            `${((index + 1) / slides.length) * 100}%`;
+        if (counter) {
+            counter.textContent =
+                `${currentIndex + 1} / ${slides.length}`;
+        }
     }
+
+
+    /* =====================================
+       CAMBIO IMMAGINE
+    ===================================== */
 
     function goTo(newIndex) {
-        index = Math.max(0, Math.min(newIndex, slides.length - 1));
-        update();
+
+        currentIndex = Math.max(
+            0,
+            Math.min(newIndex, slides.length - 1)
+        );
+
+        updateGallery();
     }
 
-    prev.addEventListener("click", () => goTo(index - 1));
-    next.addEventListener("click", () => goTo(index + 1));
 
-    viewport.addEventListener("pointerdown", (event) => {
-        if (event.pointerType === "mouse" && event.button !== 0) return;
+    /* =====================================
+       PULSANTI DESTRA E SINISTRA
+    ===================================== */
+
+    prevButton.addEventListener("click", function () {
+        goTo(currentIndex - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        goTo(currentIndex + 1);
+    });
+
+
+    /* =====================================
+       SCORRIMENTO CON MOUSE O DITO
+    ===================================== */
+
+    viewport.addEventListener("pointerdown", function (event) {
+
+        if (event.pointerType === "mouse" && event.button !== 0) {
+            return;
+        }
 
         startX = event.clientX;
         startY = event.clientY;
+
         deltaX = 0;
         dragging = true;
         horizontalGesture = false;
     });
 
-    viewport.addEventListener("pointermove", (event) => {
-        if (!dragging) return;
+
+    viewport.addEventListener("pointermove", function (event) {
+
+        if (!dragging) {
+            return;
+        }
 
         const dx = event.clientX - startX;
         const dy = event.clientY - startY;
 
-        if (!horizontalGesture && Math.max(Math.abs(dx), Math.abs(dy)) > 8) {
+        if (
+            !horizontalGesture &&
+            Math.max(Math.abs(dx), Math.abs(dy)) > 8
+        ) {
             horizontalGesture = Math.abs(dx) > Math.abs(dy);
         }
 
@@ -90,15 +178,21 @@ orm = `translateX(-${currentIndex * 100}%)`;
         }
     });
 
+
     function endDrag() {
-        if (!dragging) return;
+
+        if (!dragging) {
+            return;
+        }
+
         dragging = false;
 
         if (horizontalGesture && Math.abs(deltaX) > 45) {
+
             if (deltaX < 0) {
-                goTo(index + 1);
+                goTo(currentIndex + 1);
             } else {
-                goTo(index - 1);
+                goTo(currentIndex - 1);
             }
         }
 
@@ -106,23 +200,60 @@ orm = `translateX(-${currentIndex * 100}%)`;
         horizontalGesture = false;
     }
 
+
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
-    viewport.addEventListener("pointerleave", (event) => {
-        if (event.pointerType === "mouse") endDrag();
+
+    viewport.addEventListener("pointerleave", function (event) {
+        if (event.pointerType === "mouse") {
+            endDrag();
+        }
     });
 
-    viewport.addEventListener("keydown", (event) => {
+
+    /* =====================================
+       TASTI FRECCIA DELLA TASTIERA
+    ===================================== */
+
+    viewport.setAttribute("tabindex", "0");
+
+    viewport.addEventListener("keydown", function (event) {
+
         if (event.key === "ArrowRight") {
             event.preventDefault();
-            goTo(index + 1);
+            goTo(currentIndex + 1);
         }
 
         if (event.key === "ArrowLeft") {
             event.preventDefault();
-            goTo(index - 1);
+            goTo(currentIndex - 1);
         }
     });
 
-    update();
-})();
+
+    /* =====================================
+       AVVIO
+    ===================================== */
+
+    updateGallery();
+
+    console.log("Galleria ARCHÉ inizializzata correttamente.");
+
+});
+2. Controlla una cosa fondamentale nell'HTML
+Il codice qui sopra cerca una galleria con questa struttura e questi nomi precisi:
+
+html
+<div class="gallery-carousel">
+  <button id="gallery-prev">←</button>
+
+  <div class="gallery-viewport">
+    <div class="gallery-track">
+      <article class="gallery-slide">
+        ...
+      </article>
+    </div>
+  </div>
+
+  <button id="gallery-next">→</button>
+</div>
