@@ -1,8 +1,11 @@
-/* =========================================
-   ARCHÉ — FOGLIO DI STILE COMPLETO
-========================================= */
+/* ==================================================
+   ARCHÉ — CSS COMPLETO
+   Design architettonico minimalista e responsive
+================================================== */
 
-/* ---------- VARIABILI ---------- */
+/* =========================
+   1. VARIABILI GLOBALI
+========================= */
 
 :root {
     --bg: #f8f7f4;
@@ -12,11 +15,12 @@
     --line: #dedbd4;
     --accent: #b8a58a;
     --dark: #242421;
-    --radius: 4px;
     --container: 1200px;
 }
 
-/* ---------- RESET ---------- */
+/* =========================
+   2. RESET E STILI BASE
+========================= */
 
 * {
     box-sizing: border-box;
@@ -24,7 +28,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 95px;
 }
 
 body {
@@ -50,7 +54,8 @@ button {
 }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+.gallery-viewport:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
 }
@@ -59,7 +64,17 @@ section {
     width: 100%;
 }
 
-/* ---------- LOGO FISSO ---------- */
+#progetti,
+#3d,
+#progetti,
+#3d,
+#galleria {
+    scroll-margin-top: 95px;
+}
+
+/* =========================
+   3. LOGO FISSO
+========================= */
 
 .fixed-logo {
     position: fixed;
@@ -71,7 +86,9 @@ section {
     object-fit: contain;
 }
 
-/* ---------- HEADER ---------- */
+/* =========================
+   4. HEADER E NAVIGAZIONE
+========================= */
 
 header {
     position: sticky;
@@ -83,7 +100,7 @@ header {
     justify-content: space-between;
     gap: 24px;
     padding: 16px 40px 16px 110px;
-    background: rgba(248, 247, 244, 0.94);
+    background: rgba(248, 247, 244, 0.95);
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(12px);
 }
@@ -113,15 +130,18 @@ header {
     color: var(--accent);
 }
 
-/* ---------- HERO ---------- */
+/* =========================
+   5. HERO
+========================= */
 
 .hero {
+    width: 100%;
     max-width: var(--container);
     min-height: 620px;
     margin: 0 auto;
     padding: 90px 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     gap: 70px;
 }
@@ -155,7 +175,9 @@ header {
     line-height: 1.9;
 }
 
-/* ---------- PULSANTI ---------- */
+/* =========================
+   6. PULSANTI GENERALI
+========================= */
 
 .btn {
     display: inline-flex;
@@ -170,6 +192,7 @@ header {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 1.5px;
+    cursor: pointer;
     transition:
         background 0.25s ease,
         color 0.25s ease,
@@ -186,10 +209,13 @@ header {
     color: white;
 }
 
-/* ---------- MODELLO 3D HERO ---------- */
+/* =========================
+   7. MODELLO 3D HERO
+========================= */
 
 .stage {
     position: relative;
+    min-width: 0;
     min-height: 400px;
     display: flex;
     align-items: center;
@@ -259,8 +285,8 @@ header {
 }
 
 .r4 {
-    bottom: 0;
     right: 0;
+    bottom: 0;
     width: 30%;
     height: 50%;
     background: #d2cabb;
@@ -321,7 +347,9 @@ header {
     background: #e9e5dc;
 }
 
-/* ---------- VIDEO ---------- */
+/* =========================
+   8. VIDEO
+========================= */
 
 .video-section {
     padding: 50px 24px 70px;
@@ -344,19 +372,9 @@ header {
     object-fit: contain;
 }
 
-/* ---------- TITOLI DELLE SEZIONI ---------- */
-
-#progetti,
-.gallery-section,
-#3d {
-    scroll-margin-top: 95px;
-}
-
-#progetti {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 65px 40px;
-}
+/* =========================
+   9. TITOLI DELLE SEZIONI
+========================= */
 
 .sectionTitle {
     display: flex;
@@ -382,7 +400,15 @@ header {
     letter-spacing: 1.5px;
 }
 
-/* ---------- SCHEDE PROGETTI ---------- */
+/* =========================
+   10. PROGETTI IN EVIDENZA
+========================= */
+
+#progetti {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 65px 40px;
+}
 
 .cards {
     display: grid;
@@ -450,39 +476,42 @@ header {
     font-weight: 600;
 }
 
-/* =========================================
-   GALLERIA INTERATTIVA ARCHÉ
-========================================= */
+/* ==================================================
+   11. GALLERIA ORIZZONTALE INTERATTIVA
+   Una sola immagine visibile alla volta
+================================================== */
 
 .gallery-section {
+    width: 100%;
     padding: 65px 24px;
     overflow: hidden;
 }
 
 .gallery-section .sectionTitle {
-    max-width: var(--container);
+    width: 100%;
+    max-width: 1050px;
     margin: 0 auto 35px;
 }
 
-/* Contenitore con le frecce ai lati */
+/* Contenitore: freccia + immagine + freccia */
 
 .gallery-carousel {
     display: grid;
-    grid-template-columns: 52px minmax(0, 1fr) 52px;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
     align-items: center;
     gap: 20px;
     width: 100%;
     max-width: 1050px;
-    margin: 35px auto 0;
+    margin: 0 auto;
 }
 
-/* Finestra delle immagini */
+/* Finestra che nasconde tutte le altre immagini */
 
 .gallery-viewport {
     width: 100%;
     min-width: 0;
     overflow: hidden;
-    border-radius: var(--radius);
+    border-radius: 4px;
     cursor: grab;
     touch-action: pan-y;
     user-select: none;
@@ -493,17 +522,17 @@ header {
     cursor: grabbing;
 }
 
-/* Nastro che contiene tutte le immagini */
+/* Nastro orizzontale delle 10 immagini */
 
 .gallery-track {
     display: flex;
+    align-items: flex-start;
     width: 100%;
-    align-items: stretch;
-    transition: transform 0.45s ease;
+    transition: transform 0.4s ease;
     will-change: transform;
 }
 
-/* Singola immagine e descrizione */
+/* Ogni elemento occupa esattamente una schermata */
 
 .gallery-slide {
     flex: 0 0 100%;
@@ -512,10 +541,12 @@ header {
     margin: 0;
 }
 
+/* Immagine centrata */
+
 .gallery-slide img {
     display: block;
     width: 100%;
-    height: clamp(260px, 55vw, 560px);
+    height: clamp(280px, 55vw, 560px);
     object-fit: contain;
     object-position: center;
     background: #f1f0ec;
@@ -523,16 +554,17 @@ header {
     -webkit-user-drag: none;
 }
 
-/* Testo sotto l'immagine */
+/* Descrizione legata alla singola immagine */
 
 .gallery-caption {
-    padding: 24px 12px 20px;
+    min-height: 105px;
+    padding: 20px 10px;
     text-align: center;
 }
 
-.gallery-number {
+.gallery-caption span {
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: var(--muted);
     font-size: 10px;
     font-weight: 600;
@@ -547,14 +579,14 @@ header {
     line-height: 1.8;
 }
 
-/* Frecce di navigazione */
+/* Freccia sinistra e destra */
 
 .gallery-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
     padding: 0;
     border: 1px solid #d8d5cf;
     border-radius: 50%;
@@ -577,33 +609,28 @@ header {
 }
 
 .gallery-arrow:disabled {
-    cursor: default;
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
-.gallery-arrow:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-}
-
-/* Barra di avanzamento */
+/* Indicatore di avanzamento */
 
 .gallery-progress {
     width: min(300px, 70%);
     height: 2px;
-    margin: 10px auto 0;
+    margin: 10px auto;
     overflow: hidden;
     background: #e4e1dc;
 }
 
 .gallery-progress-bar {
-    display: block;
     width: 10%;
     height: 100%;
     background: var(--dark);
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
 }
 
-/* Suggerimento di scorrimento */
+/* Suggerimento sotto la galleria */
 
 .gallery-hint {
     margin: 18px 0 0;
@@ -613,9 +640,9 @@ header {
     letter-spacing: 1.5px;
 }
 
-/* =========================================
-   SEZIONE PLANIMETRIA E 3D
-========================================= */
+/* =========================
+   12. PLANIMETRIA E 3D
+========================= */
 
 #3d {
     padding: 80px 40px;
@@ -674,9 +701,9 @@ header {
     line-height: 1.9;
 }
 
-/* =========================================
-   RESPONSIVE — TABLET
-========================================= */
+/* =========================
+   13. TABLET
+========================= */
 
 @media (max-width: 900px) {
 
@@ -711,9 +738,9 @@ header {
     }
 }
 
-/* =========================================
-   RESPONSIVE — TELEFONI
-========================================= */
+/* =========================
+   14. TELEFONI
+========================= */
 
 @media (max-width: 600px) {
 
@@ -755,7 +782,7 @@ header {
 
     .hero {
         min-height: auto;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 35px;
         padding: 55px 20px 45px;
     }
@@ -797,7 +824,7 @@ header {
     }
 
     .cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 18px;
     }
 
@@ -805,7 +832,7 @@ header {
         height: 210px;
     }
 
-    /* Galleria mobile */
+    /* Galleria su smartphone */
 
     .gallery-section {
         padding: 45px 12px;
@@ -818,13 +845,11 @@ header {
     .gallery-carousel {
         grid-template-columns: 32px minmax(0, 1fr) 32px;
         gap: 7px;
-        margin-top: 20px;
     }
 
     .gallery-arrow {
         width: 32px;
         height: 36px;
-        border-radius: 50%;
         font-size: 18px;
     }
 
@@ -835,10 +860,11 @@ header {
     }
 
     .gallery-caption {
-        padding: 17px 3px 15px;
+        min-height: 95px;
+        padding: 16px 3px;
     }
 
-    .gallery-number {
+    .gallery-caption span {
         margin-bottom: 8px;
         font-size: 9px;
     }
@@ -858,14 +884,14 @@ header {
         letter-spacing: 1px;
     }
 
-    /* Planimetria mobile */
+    /* Planimetria su smartphone */
 
     #3d {
         padding: 50px 18px;
     }
 
     .viewer {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 35px;
     }
 
@@ -878,7 +904,9 @@ header {
     }
 }
 
-/* ---------- ACCESSIBILITÀ ---------- */
+/* =========================
+   15. RIDUZIONE ANIMAZIONI
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
 
