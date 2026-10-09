@@ -1,885 +1,897 @@
+/* =========================================
+   ARCHÉ — FOGLIO DI STILE COMPLETO
+========================================= */
+
+/* ---------- VARIABILI ---------- */
+
 :root {
---bg: #f4f2ee;
---ink: #171717;
---muted: #73706a;
---card: #fff;
---line: #ddd8d0;
---accent: #a88963;
+    --bg: #f8f7f4;
+    --surface: #ffffff;
+    --text: #222222;
+    --muted: #77746e;
+    --line: #dedbd4;
+    --accent: #b8a58a;
+    --dark: #242421;
+    --radius: 4px;
+    --container: 1200px;
 }
 
-
-/* =====================================
-IMPOSTAZIONI GENERALI
-===================================== */
+/* ---------- RESET ---------- */
 
 * {
-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
-margin: 0;
-
-font-family: Inter, Arial, sans-serif;
-
-background: var(--bg);
-color: var(--ink);
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-
-/* =====================================
-LOGO FISSO IN ALTO A SINISTRA
-===================================== */
-
-.fixed-logo {
-
-position: fixed;
-
-top: 16px;
-left: 18px;
-
-width: 55px;
-height: 55px;
-
-object-fit: contain;
-
-z-index: 1000;
-
-background: white;
-
-padding: 5px;
-
-border-radius: 5px;
+img {
+    max-width: 100%;
 }
 
-
-/* =====================================
-HEADER ORIGINALE
-===================================== */
-
-header {
-
-height: 76px;
-
-padding: 0 6vw;
-
-display: flex;
-
-align-items: center;
-
-justify-content: space-between;
-
-border-bottom: 1px solid var(--line);
-
-background: #f8f6f2;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-
-.logo {
-
-font-weight: 800;
-
-letter-spacing: .16em;
-
-font-size: 18px;
+button {
+    font: inherit;
 }
 
-
-.nav {
-
-display: flex;
-
-gap: 28px;
-
-font-size: 13px;
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }
-
-
-.nav a {
-
-color: inherit;
-
-text-decoration: none;
-}
-
-
-/* =====================================
-HERO ORIGINALE
-===================================== */
-
-.hero {
-
-min-height: 690px;
-
-padding: 65px 6vw 50px;
-
-display: grid;
-
-grid-template-columns: 42% 58%;
-
-gap: 20px;
-
-align-items: center;
-}
-
-
-.eyebrow {
-
-font-size: 11px;
-
-letter-spacing: .2em;
-
-color: var(--accent);
-
-font-weight: 700;
-}
-
-
-.hero h1 {
-
-font-size: clamp(46px, 6vw, 86px);
-
-line-height: .93;
-
-margin: 18px 0;
-}
-
-
-.hero p {
-
-font-size: 17px;
-
-line-height: 1.6;
-
-color: var(--muted);
-
-max-width: 480px;
-}
-
-
-/* =====================================
-BOTTONI
-===================================== */
-
-.btn {
-
-display: inline-block;
-
-margin-top: 18px;
-
-background: #171717;
-
-color: white;
-
-padding: 15px 24px;
-
-border-radius: 4px;
-
-text-decoration: none;
-
-font-size: 13px;
-}
-
-
-/* =====================================
-MODELLO 3D
-===================================== */
-
-.stage {
-
-height: 560px;
-
-position: relative;
-
-perspective: 1000px;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-overflow: hidden;
-}
-
-
-.house {
-
-width: 430px;
-
-height: 300px;
-
-position: relative;
-
-transform-style: preserve-3d;
-
-transform:
-rotateX(59deg)
-rotateZ(-34deg);
-
-transition: transform .7s;
-}
-
-
-.floor {
-
-position: absolute;
-
-inset: 0;
-
-background: #d9d1c5;
-
-border: 2px solid #918678;
-
-box-shadow: 0 35px 60px #0002;
-}
-
-
-.room {
-
-position: absolute;
-
-border: 2px solid #777066;
-
-background: #eee9e1;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-font-size: 12px;
-
-font-weight: 700;
-
-color: #615b54;
-}
-
-
-.r1 {
-
-left: 0;
-
-top: 0;
-
-width: 48%;
-
-height: 55%;
-}
-
-
-.r2 {
-
-right: 0;
-
-top: 0;
-
-width: 52%;
-
-height: 55%;
-}
-
-
-.r3 {
-
-left: 0;
-
-bottom: 0;
-
-width: 58%;
-
-height: 45%;
-}
-
-
-.r4 {
-
-right: 0;
-
-bottom: 0;
-
-width: 42%;
-
-height: 45%;
-}
-
-
-.wall {
-
-position: absolute;
-
-background: #b8aea1;
-}
-
-
-.back {
-
-width: 430px;
-
-height: 300px;
-
-transform: translateZ(95px);
-
-background:
-linear-gradient(
-145deg,
-#ded8ce,
-#aaa092
-);
-
-opacity: .98;
-}
-
-
-.roof {
-
-position: absolute;
-
-left: 20px;
-
-top: -75px;
-
-width: 390px;
-
-height: 270px;
-
-background: #8e8579;
-
-transform:
-rotateX(72deg)
-translateZ(70px);
-
-clip-path:
-polygon(
-50% 0,
-100% 30%,
-100% 100%,
-0 100%,
-0 30%
-);
-
-opacity: .9;
-}
-
-
-/* =====================================
-ETICHETTA MODELLO
-===================================== */
-
-.stageLabel {
-
-position: absolute;
-
-bottom: 24px;
-
-left: 50%;
-
-transform: translateX(-50%);
-
-background: #fff;
-
-padding: 10px 16px;
-
-border: 1px solid var(--line);
-
-font-size: 11px;
-
-letter-spacing: .08em;
-}
-
-
-/* =====================================
-CONTROLLI 3D
-===================================== */
-
-.controls {
-
-position: absolute;
-
-right: 24px;
-
-bottom: 22px;
-
-display: flex;
-
-gap: 8px;
-}
-
-
-.controls button {
-
-border: 1px solid var(--line);
-
-background: #fff;
-
-padding: 10px 13px;
-
-border-radius: 4px;
-
-cursor: pointer;
-}
-
-
-/* =====================================
-VIDEO
-===================================== */
-
-.video-section {
-
-width: 100%;
-
-padding: 35px 6vw 75px;
-
-display: flex;
-
-justify-content: center;
-
-align-items: center;
-}
-
-
-.video-container {
-
-width: 70%;
-
-max-width: 900px;
-
-margin: 0 auto;
-
-background: #000;
-
-border-radius: 6px;
-
-overflow: hidden;
-
-box-shadow: 0 15px 40px rgba(0, 0, 0, .12);
-}
-
-
-.video-container video {
-
-width: 100%;
-
-height: auto;
-
-display: block;
-}
-
-
-/* =====================================
-SEZIONI
-===================================== */
 
 section {
-
-padding: 75px 6vw;
+    width: 100%;
 }
 
+/* ---------- LOGO FISSO ---------- */
 
-.sectionTitle {
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: end;
-
-margin-bottom: 30px;
+.fixed-logo {
+    position: fixed;
+    top: 18px;
+    left: 24px;
+    z-index: 1001;
+    width: 64px;
+    height: auto;
+    object-fit: contain;
 }
 
+/* ---------- HEADER ---------- */
 
-.sectionTitle h2 {
-
-font-size: 40px;
-
-margin: 0;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px 40px 16px 110px;
+    background: rgba(248, 247, 244, 0.94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(12px);
 }
 
-
-.sectionTitle span {
-
-color: var(--muted);
-
-font-size: 13px;
+.logo {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 4px;
 }
-
-
-/* =====================================
-CARDS ORIGINALI
-===================================== */
-
-.cards {
-
-display: grid;
-
-grid-template-columns:
-repeat(3, 1fr);
-
-gap: 18px;
-}
-
-
-.card {
-
-background: var(--card);
-
-border: 1px solid var(--line);
-
-overflow: hidden;
-}
-
-
-.thumb {
-
-height: 230px;
-
-background: #ddd5c9;
-
-position: relative;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-}
-
-
-.miniHouse {
-
-width: 150px;
-
-height: 105px;
-
-background: #ece8e0;
-
-border: 2px solid #8d8377;
-
-transform:
-skewY(-15deg)
-rotate(-8deg);
-
-box-shadow:
-20px 20px 0 #b6aa9a;
-}
-
-
-.cardbody {
-
-padding: 22px;
-}
-
-
-.card h3 {
-
-margin: 0 0 8px;
-
-font-size: 19px;
-}
-
-
-.meta {
-
-font-size: 12px;
-
-color: var(--muted);
-
-display: flex;
-
-gap: 12px;
-}
-
-
-.price {
-
-margin-top: 20px;
-
-font-weight: 800;
-}
-
-
-/* =====================================
-GALLERIA DELLE 10 FOTO
-===================================== */
-
-.gallery-section {
-
-padding-top: 40px;
-}
-
-
-.gallery {
-
-display: grid;
-
-grid-template-columns:
-repeat(2, 1fr);
-
-gap: 20px;
-
-max-width: 1200px;
-
-margin: 0 auto;
-}
-
-
-.gallery-item {
-
-background: white;
-
-border: 1px solid var(--line);
-
-overflow: hidden;
-
-border-radius: 4px;
-
-transition:
-transform .3s ease,
-box-shadow .3s ease;
-}
-
-
-.gallery-item img {
-
-width: 100%;
-
-height: auto;
-
-display: block;
-}
-
-
-.gallery-item:hover {
-
-transform: translateY(-4px);
-
-box-shadow:
-0 12px 30px rgba(0, 0, 0, .12);
-}
-
-
-/* =====================================
-SEZIONE VIEWER 3D ORIGINALE
-===================================== */
-
-.viewer {
-
-margin-top: 55px;
-
-background: #171717;
-
-color: #fff;
-
-min-height: 520px;
-
-display: grid;
-
-grid-template-columns: 1fr 1fr;
-}
-
-
-.plan {
-
-padding: 45px;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-}
-
-
-.plan svg {
-
-max-width: 100%;
-
-background: #f3f0ea;
-}
-
-
-.info {
-
-padding: 55px;
-
-display: flex;
-
-flex-direction: column;
-
-justify-content: center;
-}
-
-
-.info p {
-
-color: #bdb8b0;
-
-line-height: 1.6;
-}
-
-
-.tag {
-
-display: inline-block;
-
-border: 1px solid #555;
-
-padding: 7px 10px;
-
-font-size: 10px;
-
-letter-spacing: .12em;
-
-width: max-content;
-}
-
-
-.darkbtn {
-
-background: #fff;
-
-color: #171717;
-}
-
-
-/* =====================================
-TABLET / MOBILE
-===================================== */
-
-@media (max-width: 850px) {
-
-.hero {
-
-grid-template-columns: 1fr;
-
-min-height: auto;
-}
-
-
-.stage {
-
-height: 430px;
-}
-
-
-.cards {
-
-grid-template-columns: 1fr;
-}
-
-
-.gallery {
-
-grid-template-columns: 1fr;
-}
-
-
-.viewer {
-
-grid-template-columns: 1fr;
-}
-
 
 .nav {
-
-display: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 28px;
 }
 
+.nav a {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    transition: color 0.25s ease;
+}
+
+.nav a:hover {
+    color: var(--accent);
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    max-width: var(--container);
+    min-height: 620px;
+    margin: 0 auto;
+    padding: 90px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.eyebrow {
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin: 0 0 24px;
+    font-size: clamp(42px, 5vw, 70px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -2.5px;
+}
+
+.hero h1 i {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+}
+
+.hero p {
+    max-width: 470px;
+    margin: 0 0 32px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* ---------- PULSANTI ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 14px 22px;
+    border: 1px solid var(--dark);
+    background: var(--dark);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--dark);
+}
+
+.darkbtn {
+    background: var(--dark);
+    color: white;
+}
+
+/* ---------- MODELLO 3D HERO ---------- */
+
+.stage {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at center,
+            #ffffff 0%,
+            #f0eee8 75%,
+            #e8e5de 100%
+        );
+    border: 1px solid var(--line);
+}
+
+.house {
+    position: relative;
+    width: 260px;
+    height: 220px;
+    transform: rotateX(59deg) rotateZ(-34deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.floor {
+    position: absolute;
+    inset: 0;
+    background: #ded8cc;
+    border: 4px solid #373631;
+    transform: translateZ(0);
+}
+
+.room {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee9df;
+    border: 3px solid #373631;
+    color: #57534b;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.r1 {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+}
+
+.r2 {
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: #d8d1c3;
+}
+
+.r3 {
+    bottom: 0;
+    left: 0;
+    width: 70%;
+    height: 50%;
+    background: #e7e2d8;
+}
+
+.r4 {
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 50%;
+    background: #d2cabb;
+}
+
+.back {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    background: #aaa18f;
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+}
+
+.roof {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: #b8ad99;
+    opacity: 0.65;
+    transform: translateZ(35px);
+}
+
+.stageLabel {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.controls {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.controls button {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    background: white;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.controls button:hover {
+    background: #e9e5dc;
+}
+
+/* ---------- VIDEO ---------- */
+
+.video-section {
+    padding: 50px 24px 70px;
+}
 
 .video-container {
-
-width: 90%;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #e9e6df;
+    border: 1px solid var(--line);
 }
 
+.video-container video {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: contain;
 }
 
+/* ---------- TITOLI DELLE SEZIONI ---------- */
 
-/* =====================================
-TELEFONO
-===================================== */
+#progetti,
+.gallery-section,
+#3d {
+    scroll-margin-top: 95px;
+}
+
+#progetti {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 65px 40px;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.sectionTitle h2 {
+    margin: 0;
+    font-size: clamp(27px, 3vw, 38px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.sectionTitle span {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+/* ---------- SCHEDE PROGETTI ---------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #efede7;
+}
+
+.miniHouse {
+    position: relative;
+    width: 150px;
+    height: 120px;
+    background: #ddd6c9;
+    border: 3px solid #6c675d;
+    transform: skewY(-8deg) rotate(-3deg);
+    box-shadow: 12px 12px 0 #c5bdaf;
+}
+
+.cardbody {
+    padding: 22px;
+}
+
+.cardbody h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.price {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--line);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* =========================================
+   GALLERIA INTERATTIVA ARCHÉ
+========================================= */
+
+.gallery-section {
+    padding: 65px 24px;
+    overflow: hidden;
+}
+
+.gallery-section .sectionTitle {
+    max-width: var(--container);
+    margin: 0 auto 35px;
+}
+
+/* Contenitore con le frecce ai lati */
+
+.gallery-carousel {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1050px;
+    margin: 35px auto 0;
+}
+
+/* Finestra delle immagini */
+
+.gallery-viewport {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    cursor: grab;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.gallery-viewport:active {
+    cursor: grabbing;
+}
+
+/* Nastro che contiene tutte le immagini */
+
+.gallery-track {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+
+/* Singola immagine e descrizione */
+
+.gallery-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.gallery-slide img {
+    display: block;
+    width: 100%;
+    height: clamp(260px, 55vw, 560px);
+    object-fit: contain;
+    object-position: center;
+    background: #f1f0ec;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+/* Testo sotto l'immagine */
+
+.gallery-caption {
+    padding: 24px 12px 20px;
+    text-align: center;
+}
+
+.gallery-number {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.gallery-caption p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: #45433e;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Frecce di navigazione */
+
+.gallery-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 1px solid #d8d5cf;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+    font-size: 23px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.gallery-arrow:hover:not(:disabled) {
+    background: var(--dark);
+    color: white;
+    border-color: var(--dark);
+}
+
+.gallery-arrow:disabled {
+    cursor: default;
+}
+
+.gallery-arrow:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Barra di avanzamento */
+
+.gallery-progress {
+    width: min(300px, 70%);
+    height: 2px;
+    margin: 10px auto 0;
+    overflow: hidden;
+    background: #e4e1dc;
+}
+
+.gallery-progress-bar {
+    display: block;
+    width: 10%;
+    height: 100%;
+    background: var(--dark);
+    transition: width 0.3s ease;
+}
+
+/* Suggerimento di scorrimento */
+
+.gallery-hint {
+    margin: 18px 0 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+/* =========================================
+   SEZIONE PLANIMETRIA E 3D
+========================================= */
+
+#3d {
+    padding: 80px 40px;
+    background: #eeece6;
+}
+
+.viewer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 70px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 20px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--line);
+}
+
+.plan svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 420px;
+}
+
+.info .tag {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.info h2 {
+    margin: 0 0 20px;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.info p {
+    margin: 0 0 28px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding-right: 24px;
+        padding-left: 100px;
+    }
+
+    .nav {
+        gap: 16px;
+    }
+
+    .hero {
+        gap: 35px;
+        padding: 70px 28px;
+    }
+
+    .stage {
+        min-height: 350px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .viewer {
+        gap: 35px;
+    }
+
+    .gallery-carousel {
+        gap: 12px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE — TELEFONI
+========================================= */
 
 @media (max-width: 600px) {
 
-.fixed-logo {
+    html {
+        scroll-padding-top: 120px;
+    }
 
-width: 45px;
+    .fixed-logo {
+        top: 12px;
+        left: 14px;
+        width: 48px;
+    }
 
-height: 45px;
+    header {
+        min-height: 100px;
+        align-items: flex-end;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        padding: 14px 12px 14px 72px;
+    }
 
-top: 10px;
+    .logo {
+        align-self: flex-end;
+        font-size: 17px;
+        letter-spacing: 3px;
+    }
 
-left: 10px;
+    .nav {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 8px 14px;
+    }
+
+    .nav a {
+        font-size: 8px;
+        letter-spacing: 0.7px;
+    }
+
+    .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 55px 20px 45px;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 11vw, 54px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .stage {
+        min-height: 320px;
+    }
+
+    .house {
+        transform: scale(0.85) rotateX(59deg) rotateZ(-34deg);
+    }
+
+    .video-section {
+        padding: 30px 14px 45px;
+    }
+
+    #progetti {
+        padding: 45px 18px;
+    }
+
+    .sectionTitle {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .sectionTitle h2 {
+        font-size: 29px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .thumb {
+        height: 210px;
+    }
+
+    /* Galleria mobile */
+
+    .gallery-section {
+        padding: 45px 12px;
+    }
+
+    .gallery-section .sectionTitle {
+        margin-bottom: 25px;
+    }
+
+    .gallery-carousel {
+        grid-template-columns: 32px minmax(0, 1fr) 32px;
+        gap: 7px;
+        margin-top: 20px;
+    }
+
+    .gallery-arrow {
+        width: 32px;
+        height: 36px;
+        border-radius: 50%;
+        font-size: 18px;
+    }
+
+    .gallery-slide img {
+        height: 58vw;
+        min-height: 220px;
+        max-height: 380px;
+    }
+
+    .gallery-caption {
+        padding: 17px 3px 15px;
+    }
+
+    .gallery-number {
+        margin-bottom: 8px;
+        font-size: 9px;
+    }
+
+    .gallery-caption p {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .gallery-progress {
+        width: 55%;
+        margin-top: 8px;
+    }
+
+    .gallery-hint {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    /* Planimetria mobile */
+
+    #3d {
+        padding: 50px 18px;
+    }
+
+    .viewer {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .plan {
+        padding: 10px;
+    }
+
+    .info h2 {
+        font-size: 32px;
+    }
 }
 
+/* ---------- ACCESSIBILITÀ ---------- */
 
-header {
+@media (prefers-reduced-motion: reduce) {
 
-height: 65px;
-}
+    html {
+        scroll-behavior: auto;
+    }
 
-
-.hero {
-
-padding-top: 45px;
-}
-
-
-.hero h1 {
-
-font-size: 48px;
-}
-
-
-.house {
-
-transform:
-scale(.75)
-rotateX(59deg)
-rotateZ(-34deg);
-}
-
-
-.video-section {
-
-padding: 20px 15px 50px;
-}
-
-
-.video-container {
-
-width: 100%;
-}
-
-
-.sectionTitle {
-
-display: block;
-}
-
-
-.sectionTitle span {
-
-display: block;
-
-margin-top: 10px;
-}
-
-
-.sectionTitle h2 {
-
-font-size: 30px;
-}
-
-
-.gallery {
-
-grid-template-columns: 1fr;
-
-gap: 15px;
-}
-
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
