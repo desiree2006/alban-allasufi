@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================
-       VIDEO: RIPRODUZIONE AUTOMATICA
+       1. VIDEO: RIPRODUZIONE AUTOMATICA
     ===================================== */
 
     const video = document.querySelector(".hero-video");
@@ -14,53 +14,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       GALLERIA: ELEMENTI HTML
+       2. GALLERIA ARCHÉ: ELEMENTI HTML
     ===================================== */
 
     const carousel = document.querySelector(".gallery-carousel");
 
     if (!carousel) {
-        console.warn("Galleria non trovata nell'HTML.");
+        console.warn("ARCHÉ: galleria non trovata.");
         return;
     }
 
-    const viewport = carousel.querySelector(".gallery-viewport");
-    const track = carousel.querySelector(".gallery-track");
+    const viewport = carousel.querySelector("#gallery-viewport");
+    const track = carousel.querySelector("#gallery-track");
+    const prevButton = carousel.querySelector("#gallery-prev");
+    const nextButton = carousel.querySelector("#gallery-next");
+    const progress = document.querySelector("#gallery-progress-bar");
 
-    const slides = track
-        ? Array.from(track.querySelectorAll(".gallery-slide"))
-        : [];
-
-    const prevButton =
-        carousel.querySelector("#gallery-prev") ||
-        carousel.querySelector(".gallery-prev");
-
-    const nextButton =
-        carousel.querySelector("#gallery-next") ||
-        carousel.querySelector(".gallery-next");
-
-    const progress = document.querySelector(".gallery-progress-bar");
-
-    const counter =
-        document.querySelector("#gallery-counter") ||
-        document.querySelector("#my-counter");
-
-    if (
-        !viewport ||
-        !track ||
-        slides.length === 0 ||
-        !prevButton ||
-        !nextButton
-    ) {
+    if (!viewport || !track || !prevButton || !nextButton) {
         console.error(
-            "Galleria: controlla gli ID dei pulsanti e le classi nell'HTML."
+            "ARCHÉ: controlla gli ID della galleria nell'HTML."
         );
         return;
     }
 
+    const slides = Array.from(
+        track.querySelectorAll(".gallery-slide")
+    );
+
+    if (slides.length === 0) {
+        console.error("ARCHÉ: nessuna immagine trovata.");
+        return;
+    }
+
+    console.log("ARCHÉ: trovate", slides.length, "immagini.");
+
 
     /* =====================================
-       STATO DELLA GALLERIA
+       3. STATO DELLA GALLERIA
     ===================================== */
 
     let currentIndex = 0;
@@ -74,21 +64,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       AGGIORNAMENTO DELLA GALLERIA
+       4. AGGIORNAMENTO IMMAGINE E DESCRIZIONE
     ===================================== */
 
     function updateGallery() {
 
+        // Sposta immagini e descrizioni insieme.
         track.style.transform =
-            `translateX(-${currentIndex * 100}%)`;
+            "translateX(-" + (currentIndex * 100) + "%)";
 
+        // Indica quale progetto è attualmente visibile.
         slides.forEach(function (slide, index) {
+            const isCurrent = index === currentIndex;
+
             slide.setAttribute(
                 "aria-hidden",
-                index === currentIndex ? "false" : "true"
+                isCurrent ? "false" : "true"
             );
         });
 
+        // Aggiorna lo stato delle frecce.
         prevButton.disabled = currentIndex === 0;
         nextButton.disabled = currentIndex === slides.length - 1;
 
@@ -98,24 +93,31 @@ document.addEventListener("DOMContentLoaded", function () {
         nextButton.style.opacity =
             currentIndex === slides.length - 1 ? "0.4" : "1";
 
+        // Aggiorna la barra di avanzamento.
         if (progress) {
             progress.style.width =
-                `${((currentIndex + 1) / slides.length) * 100}%`;
+                ((currentIndex + 1) / slides.length * 100) + "%";
         }
+
+        // Aggiorna il contatore, se presente nell'HTML.
+        const counter =
+            document.querySelector("#gallery-counter") ||
+            document.querySelector("#my-counter");
 
         if (counter) {
             counter.textContent =
-                `${currentIndex + 1} / ${slides.length}`;
+                (currentIndex + 1) + " / " + slides.length;
         }
     }
 
 
     /* =====================================
-       CAMBIO IMMAGINE
+       5. CAMBIO PROGETTO
     ===================================== */
 
     function goTo(newIndex) {
 
+        // Impedisce di superare la prima e l'ultima immagine.
         currentIndex = Math.max(
             0,
             Math.min(newIndex, slides.length - 1)
@@ -126,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       PULSANTI DESTRA E SINISTRA
+       6. FRECCIA SINISTRA E DESTRA
     ===================================== */
 
     prevButton.addEventListener("click", function () {
@@ -139,11 +141,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       SCORRIMENTO CON MOUSE O DITO
+       7. INIZIO DEL TRASCINAMENTO
     ===================================== */
 
     viewport.addEventListener("pointerdown", function (event) {
 
+        // Ignora i pulsanti secondari del mouse.
         if (event.pointerType === "mouse" && event.button !== 0) {
             return;
         }
@@ -157,6 +160,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    /* =====================================
+       8. MOVIMENTO DEL MOUSE O DEL DITO
+    ===================================== */
+
     viewport.addEventListener("pointermove", function (event) {
 
         if (!dragging) {
@@ -166,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const dx = event.clientX - startX;
         const dy = event.clientY - startY;
 
+        // Distingue uno scorrimento orizzontale da uno verticale.
         if (
             !horizontalGesture &&
             Math.max(Math.abs(dx), Math.abs(dy)) > 8
@@ -179,6 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    /* =====================================
+       9. FINE DEL TRASCINAMENTO
+    ===================================== */
+
     function endDrag() {
 
         if (!dragging) {
@@ -187,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dragging = false;
 
+        // Cambia progetto solo se il movimento è sufficiente.
         if (horizontalGesture && Math.abs(deltaX) > 45) {
 
             if (deltaX < 0) {
@@ -200,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
         horizontalGesture = false;
     }
 
-
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
 
@@ -212,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       TASTI FRECCIA DELLA TASTIERA
+       10. FRECCE DELLA TASTIERA
     ===================================== */
 
     viewport.setAttribute("tabindex", "0");
@@ -232,28 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       AVVIO
+       11. AVVIO DELLA GALLERIA
     ===================================== */
 
     updateGallery();
 
-    console.log("Galleria ARCHÉ inizializzata correttamente.");
+    console.log("ARCHÉ: galleria inizializzata correttamente.");
 
 });
-2. Controlla una cosa fondamentale nell'HTML
-Il codice qui sopra cerca una galleria con questa struttura e questi nomi precisi:
-
-html
-<div class="gallery-carousel">
-  <button id="gallery-prev">←</button>
-
-  <div class="gallery-viewport">
-    <div class="gallery-track">
-      <article class="gallery-slide">
-        ...
-      </article>
-    </div>
-  </div>
-
-  <button id="gallery-next">→</button>
-</div>
