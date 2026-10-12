@@ -1188,7 +1188,108 @@ header {
         text-align: center;
     }
 }
+/* SEZIONE CHI SONO - ARCHÉ */
 
+.about-section {
+  padding: 80px 7%;
+  background: #f7f7f5;
+  color: #222;
+  font-family: inherit;
+}
+
+.about-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.about-photo {
+  flex: 0 0 150px;
+}
+
+.about-photo img {
+  display: block;
+  width: 150px;
+  height: 190px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3px;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-label {
+  display: block;
+  margin-bottom: 14px;
+  color: #8a7962;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.about-content h2 {
+  margin: 0 0 18px;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.about-content h3 {
+  margin: 0 0 7px;
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.about-role {
+  margin: 0 0 20px;
+  color: #8a7962;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.about-content p:not(.about-role) {
+  margin: 0 0 14px;
+  color: #626262;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.about-line {
+  width: 42px;
+  height: 2px;
+  margin-top: 22px;
+  background: #8a7962;
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 50px 24px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .about-photo {
+    flex: none;
+  }
+
+  .about-photo img {
+    width: 120px;
+    height: 150px;
+  }
+
+  .about-content h2 {
+    font-size: 31px;
+  }
+}
 /* TELEFONI MOLTO PICCOLI */
 @media (max-width: 360px) {
     .nav {
