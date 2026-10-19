@@ -1784,3 +1784,365 @@ header {
         width: 64px;
     }
 }
+:root {
+    --bg: #f7fbfe;
+    --surface: #ffffff;
+    --text: #24394b;
+    --muted: #718596;
+    --line: #dce8f0;
+    --accent: #8bbbd8;
+    --dark: #29485f;
+
+    --arche-blue: #8bbbd8;
+    --arche-pale: #edf6fc;
+    --arche-ice: #f5faff;
+    --arche-deep: #29485f;
+}
+
+/* SFONDO E TESTI */
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+::selection {
+    background: #cce6f6;
+    color: #24394b;
+}
+
+/* HEADER */
+
+header {
+    background: rgba(247, 251, 254, 0.92);
+    border-bottom: 1px solid rgba(180, 207, 225, 0.55);
+    backdrop-filter: blur(16px);
+}
+
+.logo {
+    color: var(--arche-deep);
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.nav a {
+    transition: color 0.25s ease;
+}
+
+.nav a:hover {
+    color: #6ba6cc;
+}
+
+/* TITOLI */
+
+.hero h1,
+.sectionTitle h2,
+.piante-testo h2,
+.about-content h2,
+.contatti-intro h2 {
+    color: var(--arche-deep);
+}
+
+.hero h1 i {
+    color: #77aaca;
+}
+
+.eyebrow,
+.sectionTitle > span {
+    color: #7894a8;
+}
+
+/* PULSANTI */
+
+.btn {
+    background: var(--arche-deep);
+    border-color: var(--arche-deep);
+    border-radius: 3px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #eaf5fc;
+    border-color: #8bbbd8;
+    color: var(--arche-deep);
+}
+
+button:focus-visible,
+a:focus-visible,
+.gallery-viewport:focus-visible {
+    outline-color: #72afd4;
+}
+
+/* MODELLO 3D */
+
+.v3d-stage {
+    background:
+        radial-gradient(
+            ellipse at 50% 40%,
+            #ffffff 0%,
+            #f0f8fd 60%,
+            #dfedf7 100%
+        );
+    border: 1px solid #d7e7f2;
+    box-shadow: 0 18px 50px rgba(62, 105, 137, 0.07);
+}
+
+.v3d-ui button,
+.v3d-ui label {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: #d5e5f0;
+    color: #38566d;
+    border-radius: 3px;
+}
+
+.v3d-ui button.on {
+    background: var(--arche-deep);
+    border-color: var(--arche-deep);
+    color: #ffffff;
+}
+
+.v3d-stage .stageLabel {
+    color: #607f95;
+}
+
+/* VIDEO */
+
+.video-container {
+    background: #eaf4fb;
+    border-color: #dce9f2;
+}
+
+/* PROGETTI */
+
+.card {
+    border-color: #dfeaf2;
+    border-radius: 5px;
+    background: #ffffff;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #c0dceb;
+    box-shadow: 0 18px 40px rgba(49, 89, 119, 0.10);
+}
+
+.thumb {
+    background:
+        radial-gradient(
+            ellipse at center,
+            #ffffff 0%,
+            #f0f7fc 100%
+        );
+}
+
+.miniHouse {
+    background: #dcecf6;
+    border-color: #7799b0;
+    box-shadow: 12px 12px 0 #c8dce9;
+}
+
+.cardbody h3 {
+    color: var(--arche-deep);
+}
+
+.price {
+    border-color: #e2edf4;
+    color: #426b88;
+}
+
+/* GALLERIA */
+
+.gallery-slide img {
+    background: #f0f7fc;
+}
+
+.gallery-caption {
+    color: var(--arche-deep);
+}
+
+.gallery-caption span {
+    color: #6f9dbb;
+}
+
+.gallery-caption p {
+    color: #566c7d;
+}
+
+.gallery-arrow {
+    border-color: #d3e3ee;
+    background: #ffffff;
+    color: var(--arche-deep);
+    transition: all 0.25s ease;
+}
+
+.gallery-arrow:hover:not(:disabled) {
+    background: var(--arche-deep);
+    border-color: var(--arche-deep);
+    color: #ffffff;
+}
+
+.gallery-progress {
+    background: #dceaf3;
+}
+
+.gallery-progress-bar {
+    background: #7fb5d5;
+}
+
+/* PLANIMETRIE */
+
+.piante-link {
+    border-color: #dce9f2;
+    box-shadow: 0 8px 28px rgba(49, 89, 119, 0.04);
+}
+
+.piante-link:hover {
+    border-color: #b9d6e8;
+    box-shadow: 0 15px 35px rgba(49, 89, 119, 0.09);
+}
+
+.piante-testo {
+    background: linear-gradient(
+        145deg,
+        #f0f8fd 0%,
+        #e6f2fa 100%
+    );
+    border-color: #dcebf5;
+}
+
+.piante-eyebrow {
+    color: #6d9ab8;
+}
+
+.piante-testo h2 {
+    color: #29485f;
+}
+
+.piante-testo h2 span {
+    color: #78a9c8;
+}
+
+.piante-testo p {
+    color: #536d80;
+}
+
+.piante-btn {
+    background: #29485f;
+    border-color: #29485f;
+    border-radius: 3px;
+}
+
+.piante-btn:hover {
+    background: #ffffff;
+    border-color: #8bbbd8;
+    color: #29485f;
+}
+
+/* CHI SONO */
+
+.about-section {
+    background: #f0f7fc;
+    color: #29485f;
+}
+
+.about-label,
+.about-role {
+    color: #6b9dbd;
+}
+
+.about-content h2,
+.about-content h3 {
+    color: #29485f;
+}
+
+.about-content p:not(.about-role) {
+    color: #5d7180;
+}
+
+.about-line {
+    background: #8bbbd8;
+}
+
+/* CONTATTI */
+
+.contatti-box {
+    background: linear-gradient(
+        135deg,
+        #eff8fd 0%,
+        #e6f2fa 100%
+    );
+    border-color: #d8e9f4;
+}
+
+.contatti-eyebrow {
+    color: #6c9dbb;
+}
+
+.contatti-intro h2 {
+    color: #29485f;
+}
+
+.contatti-intro p {
+    color: #536d80;
+}
+
+.contatti-item {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #d8e7f1;
+    color: #29485f;
+}
+
+.contatti-item:hover {
+    background: #ffffff;
+    border-color: #9dc8e0;
+    box-shadow: 0 8px 22px rgba(49, 89, 119, 0.06);
+}
+
+.contatti-icon {
+    background: #e1eff8;
+    color: #477b9c;
+}
+
+.contatti-label,
+.contatti-freccia {
+    color: #7196af;
+}
+
+.contatti-valore {
+    color: #29485f;
+}
+
+/* ANIMAZIONI SOBRIE */
+
+@media (prefers-reduced-motion: no-preference) {
+    .piante-link,
+    .card,
+    .contatti-item {
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+    }
+}
+
+/* TELEFONI: mantieni il layout esistente */
+
+@media (max-width: 600px) {
+    .hero h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .contatti-box,
+    .piante-testo {
+        border-radius: 7px;
+    }
+
+    .v3d-stage {
+        box-shadow: 0 8px 24px rgba(62, 105, 137, 0.06);
+    }
+}
