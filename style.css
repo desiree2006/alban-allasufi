@@ -647,15 +647,15 @@ header {
 /* COMPUTER */
 .piante-grid {
     display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-columns: 360px minmax(0, 1fr);
     align-items: center;
-    gap: 35px;
+    gap: 45px;
 }
 
 .piante-link {
     display: block;
     width: 100%;
-    max-width: 220px;
+    max-width: 360px;
     box-sizing: border-box;
 }
 
@@ -665,7 +665,7 @@ header {
     height: auto;
 }
 
-/* TABLET E TELEFONI */
+/* TELEFONI E TABLET PICCOLI */
 @media (max-width: 600px) {
     .piante-section {
         padding: 35px 16px;
