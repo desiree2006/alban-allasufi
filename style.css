@@ -210,7 +210,7 @@ header {
 }
 
 /* =========================
-   7. MODELLO 3D HERO
+   7. MODELLO 3D HERO (vecchio, non più usato)
 ========================= */
 
 .stage {
@@ -1325,5 +1325,92 @@ header {
         scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   MODELLO 3D NUOVO (hero)
+========================================= */
+
+.v3d-stage {
+    position: relative;
+    min-width: 0;
+    height: 540px;
+    overflow: hidden;
+    background: #f0eee8;
+    border: 1px solid var(--line);
+}
+
+.v3d-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+.v3d-stage .stageLabel {
+    z-index: 2;
+    line-height: 1.7;
+    pointer-events: none;
+}
+
+.v3d-ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.v3d-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.v3d-row > * {
+    pointer-events: auto;
+}
+
+.v3d-ui button,
+.v3d-ui label {
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.v3d-ui label {
+    cursor: default;
+}
+
+.v3d-ui button.on {
+    background: var(--dark);
+    border-color: var(--dark);
+    color: #fff;
+}
+
+.v3d-ui input[type=range] {
+    width: 80px;
+    vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+    .v3d-stage {
+        height: 460px;
+    }
+
+    .v3d-ui input[type=range] {
+        width: 64px;
     }
 }
