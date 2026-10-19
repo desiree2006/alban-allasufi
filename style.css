@@ -1789,365 +1789,175 @@ header {
    ARCHÉ — RESTYLING AZZURRO ELEGANTE
 ========================================= */
 
+/* Font eleganti per il sito */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* Testi più scuri e leggibili */
 :root {
-    --bg: #f7fbfe;
-    --surface: #ffffff;
-    --text: #24394b;
-    --muted: #718596;
-    --line: #dce8f0;
-    --accent: #8bbbd8;
-    --dark: #29485f;
+    --text: #243342;
+    --muted: #536779;
+    --dark: #243D50;
 
-    --arche-blue: #8bbbd8;
-    --arche-pale: #edf6fc;
-    --arche-ice: #f5faff;
-    --arche-deep: #29485f;
+    --arche-ink: #243342;
+    --arche-blue: #729DB9;
+    --arche-line: #D7E5EF;
 }
 
-/* SFONDO E TESTI */
-
+/* Font principale */
 body {
-    background: var(--bg);
-    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--arche-ink);
+    line-height: 1.75;
 }
 
-::selection {
-    background: #cce6f6;
-    color: #24394b;
-}
-
-/* HEADER */
-
-header {
-    background: rgba(247, 251, 254, 0.92);
-    border-bottom: 1px solid rgba(180, 207, 225, 0.55);
-    backdrop-filter: blur(16px);
-}
-
-.logo {
-    color: var(--arche-deep);
-    font-weight: 600;
-    letter-spacing: 5px;
-}
-
-.nav a {
-    transition: color 0.25s ease;
-}
-
-.nav a:hover {
-    color: #6ba6cc;
-}
-
-/* TITOLI */
-
+/* TITOLI PRINCIPALI */
 .hero h1,
 .sectionTitle h2,
 .piante-testo h2,
 .about-content h2,
 .contatti-intro h2 {
-    color: var(--arche-deep);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    color: #20384B;
+    letter-spacing: -0.8px;
+}
+
+/* Titolo iniziale */
+.hero h1 {
+    font-size: clamp(52px, 5.6vw, 78px);
+    line-height: 0.99;
+    letter-spacing: -1.8px;
 }
 
 .hero h1 i {
-    color: #77aaca;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #668EAC;
 }
 
-.eyebrow,
-.sectionTitle > span {
-    color: #7894a8;
+/* Titoli delle sezioni */
+.sectionTitle h2 {
+    font-size: clamp(36px, 4vw, 48px);
+    line-height: 1.08;
 }
 
-/* PULSANTI */
-
-.btn {
-    background: var(--arche-deep);
-    border-color: var(--arche-deep);
-    border-radius: 3px;
-    color: #ffffff;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background: #eaf5fc;
-    border-color: #8bbbd8;
-    color: var(--arche-deep);
-}
-
-button:focus-visible,
-a:focus-visible,
-.gallery-viewport:focus-visible {
-    outline-color: #72afd4;
-}
-
-/* MODELLO 3D */
-
-.v3d-stage {
-    background:
-        radial-gradient(
-            ellipse at 50% 40%,
-            #ffffff 0%,
-            #f0f8fd 60%,
-            #dfedf7 100%
-        );
-    border: 1px solid #d7e7f2;
-    box-shadow: 0 18px 50px rgba(62, 105, 137, 0.07);
-}
-
-.v3d-ui button,
-.v3d-ui label {
-    background: rgba(255, 255, 255, 0.94);
-    border-color: #d5e5f0;
-    color: #38566d;
-    border-radius: 3px;
-}
-
-.v3d-ui button.on {
-    background: var(--arche-deep);
-    border-color: var(--arche-deep);
-    color: #ffffff;
-}
-
-.v3d-stage .stageLabel {
-    color: #607f95;
-}
-
-/* VIDEO */
-
-.video-container {
-    background: #eaf4fb;
-    border-color: #dce9f2;
-}
-
-/* PROGETTI */
-
-.card {
-    border-color: #dfeaf2;
-    border-radius: 5px;
-    background: #ffffff;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: #c0dceb;
-    box-shadow: 0 18px 40px rgba(49, 89, 119, 0.10);
-}
-
-.thumb {
-    background:
-        radial-gradient(
-            ellipse at center,
-            #ffffff 0%,
-            #f0f7fc 100%
-        );
-}
-
-.miniHouse {
-    background: #dcecf6;
-    border-color: #7799b0;
-    box-shadow: 12px 12px 0 #c8dce9;
-}
-
-.cardbody h3 {
-    color: var(--arche-deep);
-}
-
-.price {
-    border-color: #e2edf4;
-    color: #426b88;
-}
-
-/* GALLERIA */
-
-.gallery-slide img {
-    background: #f0f7fc;
-}
-
-.gallery-caption {
-    color: var(--arche-deep);
-}
-
-.gallery-caption span {
-    color: #6f9dbb;
-}
-
-.gallery-caption p {
-    color: #566c7d;
-}
-
-.gallery-arrow {
-    border-color: #d3e3ee;
-    background: #ffffff;
-    color: var(--arche-deep);
-    transition: all 0.25s ease;
-}
-
-.gallery-arrow:hover:not(:disabled) {
-    background: var(--arche-deep);
-    border-color: var(--arche-deep);
-    color: #ffffff;
-}
-
-.gallery-progress {
-    background: #dceaf3;
-}
-
-.gallery-progress-bar {
-    background: #7fb5d5;
-}
-
-/* PLANIMETRIE */
-
-.piante-link {
-    border-color: #dce9f2;
-    box-shadow: 0 8px 28px rgba(49, 89, 119, 0.04);
-}
-
-.piante-link:hover {
-    border-color: #b9d6e8;
-    box-shadow: 0 15px 35px rgba(49, 89, 119, 0.09);
-}
-
-.piante-testo {
-    background: linear-gradient(
-        145deg,
-        #f0f8fd 0%,
-        #e6f2fa 100%
-    );
-    border-color: #dcebf5;
-}
-
-.piante-eyebrow {
-    color: #6d9ab8;
-}
-
+/* Titolo planimetrie */
 .piante-testo h2 {
-    color: #29485f;
+    font-size: clamp(34px, 3.5vw, 43px);
+    line-height: 1.08;
 }
 
 .piante-testo h2 span {
-    color: #78a9c8;
+    color: #668EAC;
+    font-style: italic;
 }
 
-.piante-testo p {
-    color: #536d80;
-}
-
-.piante-btn {
-    background: #29485f;
-    border-color: #29485f;
-    border-radius: 3px;
-}
-
-.piante-btn:hover {
-    background: #ffffff;
-    border-color: #8bbbd8;
-    color: #29485f;
-}
-
-/* CHI SONO */
-
-.about-section {
-    background: #f0f7fc;
-    color: #29485f;
-}
-
-.about-label,
-.about-role {
-    color: #6b9dbd;
-}
-
-.about-content h2,
-.about-content h3 {
-    color: #29485f;
-}
-
-.about-content p:not(.about-role) {
-    color: #5d7180;
-}
-
-.about-line {
-    background: #8bbbd8;
-}
-
-/* CONTATTI */
-
-.contatti-box {
-    background: linear-gradient(
-        135deg,
-        #eff8fd 0%,
-        #e6f2fa 100%
-    );
-    border-color: #d8e9f4;
-}
-
-.contatti-eyebrow {
-    color: #6c9dbb;
-}
-
+/* Titolo contatti */
 .contatti-intro h2 {
-    color: #29485f;
+    font-size: clamp(36px, 4vw, 46px);
+    line-height: 1.08;
 }
 
-.contatti-intro p {
-    color: #536d80;
+/* Titolo chi sono */
+.about-content h2 {
+    font-size: 46px;
+    line-height: 1.1;
 }
 
-.contatti-item {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: #d8e7f1;
-    color: #29485f;
+.about-content h3,
+.cardbody h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    color: #20384B;
 }
 
-.contatti-item:hover {
-    background: #ffffff;
-    border-color: #9dc8e0;
-    box-shadow: 0 8px 22px rgba(49, 89, 119, 0.06);
+.about-content h3 {
+    font-size: 29px;
 }
 
-.contatti-icon {
-    background: #e1eff8;
-    color: #477b9c;
+/* Titoli dei progetti */
+.cardbody h3 {
+    font-size: 28px;
+    line-height: 1.15;
 }
 
-.contatti-label,
-.contatti-freccia {
-    color: #7196af;
+/* Descrizioni più scure */
+.hero p,
+.piante-testo p,
+.about-content p:not(.about-role),
+.contatti-intro p,
+.gallery-caption p {
+    color: #34495A;
 }
 
+/* Etichette piccole e raffinate */
+.eyebrow,
+.sectionTitle > span,
+.piante-eyebrow,
+.about-label,
+.contatti-eyebrow,
+.gallery-caption > span {
+    font-family: 'DM Sans', sans-serif;
+    color: #58758B;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+}
+
+/* Prezzi e informazioni */
+.meta {
+    color: #4D6273;
+}
+
+.price {
+    color: #294A63;
+}
+
+/* Navigazione più elegante */
+.nav a {
+    color: #34495A;
+    font-weight: 600;
+}
+
+/* Testi dei contatti */
 .contatti-valore {
-    color: #29485f;
+    color: #243D50;
+    font-weight: 500;
 }
 
-/* ANIMAZIONI SOBRIE */
-
-@media (prefers-reduced-motion: no-preference) {
-    .piante-link,
-    .card,
-    .contatti-item {
-        transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease,
-            border-color 0.3s ease;
-    }
+.contatti-label {
+    color: #536F84;
 }
 
-/* TELEFONI: mantieni il layout esistente */
+/* Pulsanti */
+.btn,
+.piante-btn {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+}
 
+/* Smartphone */
 @media (max-width: 600px) {
     .hero h1 {
-        letter-spacing: -1.5px;
+        font-size: clamp(45px, 12vw, 62px);
+        line-height: 1.02;
     }
 
-    .contatti-box,
-    .piante-testo {
-        border-radius: 7px;
+    .sectionTitle h2 {
+        font-size: 36px;
     }
 
-    .v3d-stage {
-        box-shadow: 0 8px 24px rgba(62, 105, 137, 0.06);
+    .piante-testo h2,
+    .contatti-intro h2 {
+        font-size: 35px;
+    }
+
+    .about-content h2 {
+        font-size: 38px;
+    }
+
+    .cardbody h3 {
+        font-size: 27px;
     }
 }
+3. Quali differenze 
