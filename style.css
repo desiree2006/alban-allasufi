@@ -644,77 +644,47 @@ header {
    PIANTE DEI DUE PIANI
 ========================================= */
 
-.piante-section {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 65px 40px;
-}
-
-.piante-grid {
-    display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    align-items: center;
-    gap: 50px;
-}
-
-.piante-link {
-    display: block;
-    background: #fff;
-    border: 1px solid var(--line);
-    padding: 10px;
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.piante-link:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-.piante-link img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.piante-testo .tag {
-    display: inline-block;
-    margin-bottom: 16px;
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-}
-
-.piante-testo h2 {
-    margin: 0 0 16px;
-    font-size: clamp(26px, 3vw, 36px);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -1px;
-}
-
-.piante-testo p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.9;
-}
-
 @media (max-width: 600px) {
     .piante-section {
-        padding: 42px 16px;
+        padding: 35px 16px;
     }
 
     .piante-grid {
-        grid-template-columns: 120px minmax(0, 1fr);
-        gap: 16px;
+        grid-template-columns: 90px minmax(0, 1fr);
+        gap: 14px;
         align-items: start;
     }
 
     .piante-link {
-        padding: 5px;
+        width: 90px;
+        max-width: 90px;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
+    .piante-link img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .piante-testo .tag {
+        font-size: 8px;
+        letter-spacing: 0.5px;
+        line-height: 1.5;
+        margin-bottom: 8px;
+    }
+
+    .piante-testo h2 {
+        font-size: 20px;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+        margin-bottom: 10px;
+    }
+
+    .piante-testo p {
+        font-size: 13px;
+        line-height: 1.6;
     }
 }
 /* =========================
