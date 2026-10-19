@@ -1501,7 +1501,171 @@ header {
         transition-duration: 0.01ms !important;
     }
 }
+/* =========================================
+   SEZIONE CONTATTI
+========================================= */
 
+.contatti-section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 45px 24px 80px;
+    box-sizing: border-box;
+}
+
+.contatti-box {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 42px;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: 42px;
+    align-items: center;
+    box-sizing: border-box;
+    background: #edf5fa;
+    border: 1px solid #e1edf5;
+    border-radius: 10px;
+}
+
+.contatti-intro,
+.contatti-info {
+    min-width: 0;
+}
+
+.contatti-eyebrow {
+    display: block;
+    margin-bottom: 15px;
+    color: #658095;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 1.7;
+}
+
+.contatti-intro h2 {
+    margin: 0 0 16px;
+    color: #263d50;
+    font-size: clamp(27px, 3vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+}
+
+.contatti-intro p {
+    margin: 0;
+    color: #526675;
+    font-size: 13px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+/* TELEFONO ED EMAIL */
+
+.contatti-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contatti-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+    padding: 17px 15px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #e0eaf1;
+    border-radius: 6px;
+    color: #263d50;
+    text-decoration: none;
+    transition: background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+}
+
+.contatti-item:hover {
+    background: #ffffff;
+    border-color: #bdcfdd;
+    transform: translateY(-2px);
+}
+
+.contatti-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #e1edf5;
+    color: #45657d;
+    font-size: 18px;
+}
+
+.contatti-dettagli {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
+}
+
+.contatti-label {
+    color: #718595;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.contatti-valore {
+    color: #263d50;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.contatti-freccia {
+    flex-shrink: 0;
+    color: #658095;
+    font-size: 17px;
+}
+
+/* TABLET */
+
+@media (max-width: 800px) {
+    .contatti-box {
+        padding: 30px;
+        gap: 25px;
+    }
+}
+
+/* TELEFONI */
+
+@media (max-width: 600px) {
+    .contatti-section {
+        padding: 25px 18px 50px;
+    }
+
+    .contatti-box {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        padding: 25px 20px;
+    }
+
+    .contatti-intro h2 {
+        font-size: 29px;
+    }
+
+    .contatti-item {
+        padding: 14px 12px;
+        gap: 10px;
+    }
+
+    .contatti-valore {
+        font-size: 12px;
+    }
+}
 /* =========================================
    MODELLO 3D NUOVO (hero)
 ========================================= */
