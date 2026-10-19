@@ -2,6 +2,181 @@
    ARCHÉ — CSS COMPLETO
    Design architettonico minimalista e responsive
 ================================================== */
+/* =========================================
+   ARCHÉ — RESTYLING AZZURRO ELEGANTE
+========================================= */
+
+/* Font eleganti per il sito */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* Testi più scuri e leggibili */
+:root {
+    --text: #243342;
+    --muted: #536779;
+    --dark: #243D50;
+
+    --arche-ink: #243342;
+    --arche-blue: #729DB9;
+    --arche-line: #D7E5EF;
+}
+
+/* Font principale */
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--arche-ink);
+    line-height: 1.75;
+}
+
+/* TITOLI PRINCIPALI */
+.hero h1,
+.sectionTitle h2,
+.piante-testo h2,
+.about-content h2,
+.contatti-intro h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    color: #20384B;
+    letter-spacing: -0.8px;
+}
+
+/* Titolo iniziale */
+.hero h1 {
+    font-size: clamp(52px, 5.6vw, 78px);
+    line-height: 0.99;
+    letter-spacing: -1.8px;
+}
+
+.hero h1 i {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #668EAC;
+}
+
+/* Titoli delle sezioni */
+.sectionTitle h2 {
+    font-size: clamp(36px, 4vw, 48px);
+    line-height: 1.08;
+}
+
+/* Titolo planimetrie */
+.piante-testo h2 {
+    font-size: clamp(34px, 3.5vw, 43px);
+    line-height: 1.08;
+}
+
+.piante-testo h2 span {
+    color: #668EAC;
+    font-style: italic;
+}
+
+/* Titolo contatti */
+.contatti-intro h2 {
+    font-size: clamp(36px, 4vw, 46px);
+    line-height: 1.08;
+}
+
+/* Titolo chi sono */
+.about-content h2 {
+    font-size: 46px;
+    line-height: 1.1;
+}
+
+.about-content h3,
+.cardbody h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    color: #20384B;
+}
+
+.about-content h3 {
+    font-size: 29px;
+}
+
+/* Titoli dei progetti */
+.cardbody h3 {
+    font-size: 28px;
+    line-height: 1.15;
+}
+
+/* Descrizioni più scure */
+.hero p,
+.piante-testo p,
+.about-content p:not(.about-role),
+.contatti-intro p,
+.gallery-caption p {
+    color: #34495A;
+}
+
+/* Etichette piccole e raffinate */
+.eyebrow,
+.sectionTitle > span,
+.piante-eyebrow,
+.about-label,
+.contatti-eyebrow,
+.gallery-caption > span {
+    font-family: 'DM Sans', sans-serif;
+    color: #58758B;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+}
+
+/* Prezzi e informazioni */
+.meta {
+    color: #4D6273;
+}
+
+.price {
+    color: #294A63;
+}
+
+/* Navigazione più elegante */
+.nav a {
+    color: #34495A;
+    font-weight: 600;
+}
+
+/* Testi dei contatti */
+.contatti-valore {
+    color: #243D50;
+    font-weight: 500;
+}
+
+.contatti-label {
+    color: #536F84;
+}
+
+/* Pulsanti */
+.btn,
+.piante-btn {
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: clamp(45px, 12vw, 62px);
+        line-height: 1.02;
+    }
+
+    .sectionTitle h2 {
+        font-size: 36px;
+    }
+
+    .piante-testo h2,
+    .contatti-intro h2 {
+        font-size: 35px;
+    }
+
+    .about-content h2 {
+        font-size: 38px;
+    }
+
+    .cardbody h3 {
+        font-size: 27px;
+    }
+}
 
 /* =========================
    1. VARIABILI GLOBALI
@@ -1785,179 +1960,3 @@ header {
     }
 }
 
-/* =========================================
-   ARCHÉ — RESTYLING AZZURRO ELEGANTE
-========================================= */
-
-/* Font eleganti per il sito */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
-
-/* Testi più scuri e leggibili */
-:root {
-    --text: #243342;
-    --muted: #536779;
-    --dark: #243D50;
-
-    --arche-ink: #243342;
-    --arche-blue: #729DB9;
-    --arche-line: #D7E5EF;
-}
-
-/* Font principale */
-body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--arche-ink);
-    line-height: 1.75;
-}
-
-/* TITOLI PRINCIPALI */
-.hero h1,
-.sectionTitle h2,
-.piante-testo h2,
-.about-content h2,
-.contatti-intro h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 500;
-    color: #20384B;
-    letter-spacing: -0.8px;
-}
-
-/* Titolo iniziale */
-.hero h1 {
-    font-size: clamp(52px, 5.6vw, 78px);
-    line-height: 0.99;
-    letter-spacing: -1.8px;
-}
-
-.hero h1 i {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 400;
-    font-style: italic;
-    color: #668EAC;
-}
-
-/* Titoli delle sezioni */
-.sectionTitle h2 {
-    font-size: clamp(36px, 4vw, 48px);
-    line-height: 1.08;
-}
-
-/* Titolo planimetrie */
-.piante-testo h2 {
-    font-size: clamp(34px, 3.5vw, 43px);
-    line-height: 1.08;
-}
-
-.piante-testo h2 span {
-    color: #668EAC;
-    font-style: italic;
-}
-
-/* Titolo contatti */
-.contatti-intro h2 {
-    font-size: clamp(36px, 4vw, 46px);
-    line-height: 1.08;
-}
-
-/* Titolo chi sono */
-.about-content h2 {
-    font-size: 46px;
-    line-height: 1.1;
-}
-
-.about-content h3,
-.cardbody h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 600;
-    color: #20384B;
-}
-
-.about-content h3 {
-    font-size: 29px;
-}
-
-/* Titoli dei progetti */
-.cardbody h3 {
-    font-size: 28px;
-    line-height: 1.15;
-}
-
-/* Descrizioni più scure */
-.hero p,
-.piante-testo p,
-.about-content p:not(.about-role),
-.contatti-intro p,
-.gallery-caption p {
-    color: #34495A;
-}
-
-/* Etichette piccole e raffinate */
-.eyebrow,
-.sectionTitle > span,
-.piante-eyebrow,
-.about-label,
-.contatti-eyebrow,
-.gallery-caption > span {
-    font-family: 'DM Sans', sans-serif;
-    color: #58758B;
-    font-weight: 600;
-    letter-spacing: 1.6px;
-}
-
-/* Prezzi e informazioni */
-.meta {
-    color: #4D6273;
-}
-
-.price {
-    color: #294A63;
-}
-
-/* Navigazione più elegante */
-.nav a {
-    color: #34495A;
-    font-weight: 600;
-}
-
-/* Testi dei contatti */
-.contatti-valore {
-    color: #243D50;
-    font-weight: 500;
-}
-
-.contatti-label {
-    color: #536F84;
-}
-
-/* Pulsanti */
-.btn,
-.piante-btn {
-    font-family: 'DM Sans', sans-serif;
-    letter-spacing: 1px;
-}
-
-/* Smartphone */
-@media (max-width: 600px) {
-    .hero h1 {
-        font-size: clamp(45px, 12vw, 62px);
-        line-height: 1.02;
-    }
-
-    .sectionTitle h2 {
-        font-size: 36px;
-    }
-
-    .piante-testo h2,
-    .contatti-intro h2 {
-        font-size: 35px;
-    }
-
-    .about-content h2 {
-        font-size: 38px;
-    }
-
-    .cardbody h3 {
-        font-size: 27px;
-    }
-}
-3. Quali differenze 
