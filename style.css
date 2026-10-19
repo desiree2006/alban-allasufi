@@ -644,41 +644,59 @@ header {
    PIANTE DEI DUE PIANI
 ========================================= */
 
+/* COMPUTER */
+.piante-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: center;
+    gap: 35px;
+}
+
+.piante-link {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    box-sizing: border-box;
+}
+
+.piante-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* TABLET E TELEFONI */
 @media (max-width: 600px) {
     .piante-section {
         padding: 35px 16px;
     }
 
     .piante-grid {
-        grid-template-columns: 90px minmax(0, 1fr);
+        grid-template-columns: 100px minmax(0, 1fr);
         gap: 14px;
         align-items: start;
     }
 
     .piante-link {
-        width: 90px;
-        max-width: 90px;
+        width: 100px;
+        max-width: 100px;
         padding: 4px;
-        box-sizing: border-box;
     }
 
     .piante-link img {
         width: 100%;
         height: auto;
-        display: block;
     }
 
     .piante-testo .tag {
         font-size: 8px;
         letter-spacing: 0.5px;
-        line-height: 1.5;
         margin-bottom: 8px;
     }
 
     .piante-testo h2 {
         font-size: 20px;
         line-height: 1.25;
-        letter-spacing: -0.5px;
         margin-bottom: 10px;
     }
 
