@@ -2004,6 +2004,61 @@ header {
   scrollbar-color: #729DB9 #edf5fa;
 }
 
+/* Pulsanti apri/chiudi 3D: solo su telefono */
+.v3d-open,
+.v3d-close {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* 3D nascosto finché non lo apri */
+  .v3d-stage {
+    display: none;
+  }
+
+  .v3d-stage.aperto {
+    display: block;
+  }
+
+  .v3d-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 18px;
+    border: 1px solid var(--dark);
+    background: var(--dark);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .v3d-open.nascosto {
+    display: none;
+  }
+
+  .v3d-close {
+    display: block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 3;
+    padding: 9px 12px;
+    border: 1px solid var(--dark);
+    background: #fff;
+    color: var(--dark);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
 .card-text::-webkit-scrollbar { width: 6px; }
 .card-text::-webkit-scrollbar-thumb { background: #729DB9; border-radius: 3px; }
 .card-text::-webkit-scrollbar-track { background: #edf5fa; }
