@@ -301,12 +301,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    min-height: 76px;
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 16px 40px 16px 110px;
+    padding: 22px 40px 22px 110px;
     background: rgba(248, 247, 244, 0.95);
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(12px);
@@ -1959,4 +1959,9 @@ header {
         width: 64px;
     }
 }
-
+@media (max-width: 600px) {
+    header {
+        min-height: 104px;
+        padding: 12px 10px 12px 64px;
+    }
+}
