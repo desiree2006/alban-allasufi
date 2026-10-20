@@ -73,9 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 })();
 
-(function () {
-  var sliders = document.querySelectorAll(".slider");
-  if (!sliders.length) return;
 
   /* =====================================
    VISUALIZZATORE IMMAGINI A SCHERMO INTERO
