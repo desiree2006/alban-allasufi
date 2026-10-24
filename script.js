@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================
@@ -241,50 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
             goTo(currentIndex - 1);
         }
     });
-document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(
-    '.nav a[href="#progetti"], ' +
-    '.nav a[href="#v3d-stage"], ' +
-    '.nav a[href="#piante"], ' +
-    '.nav a[href="#contatti"]'
-  );
 
-  let timer;
-
-  links.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const id = link.getAttribute("href");
-      const section = document.getElementById(id.slice(1));
-
-      if (!section) return;
-
-      event.preventDefault();
-      clearTimeout(timer);
-
-      document
-        .querySelectorAll(".arche-section-highlight")
-        .forEach((el) => {
-          el.classList.remove("arche-section-highlight");
-        });
-
-      if (location.hash !== id) {
-        history.pushState(null, "", id);
-      }
-
-      section.scrollIntoView({
-        behavior: "auto",
-        block: "start"
-      });
-
-      void section.offsetWidth;
-      section.classList.add("arche-section-highlight");
-
-      timer = setTimeout(() => {
-        section.classList.remove("arche-section-highlight");
-      }, 1500);
-    });
-  });
-});
 
     /* =====================================
        11. AVVIO DELLA GALLERIA
@@ -294,4 +252,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("ARCHÉ: galleria inizializzata correttamente.");
 
+});
+
+
+/* =====================================
+   LINK DEL MENU: SCORRIMENTO + BAGLIORE
+   (ora è fuori dalla galleria e funziona)
+===================================== */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const links = document.querySelectorAll(
+        '.nav a[href="#progetti"], ' +
+        '.nav a[href="#v3d-stage"], ' +
+        '.nav a[href="#piante"], ' +
+        '.nav a[href="#contatti"]'
+    );
+
+    let timer;
+
+    links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            const id = link.getAttribute("href");
+            const section = document.getElementById(id.slice(1));
+
+            if (!section) return;
+
+            event.preventDefault();
+            clearTimeout(timer);
+
+            document
+                .querySelectorAll(".arche-section-highlight")
+                .forEach(function (el) {
+                    el.classList.remove("arche-section-highlight");
+                });
+
+            if (location.hash !== id) {
+                history.pushState(null, "", id);
+            }
+
+            section.scrollIntoView({
+                behavior: "auto",
+                block: "start"
+            });
+
+            void section.offsetWidth;
+            section.classList.add("arche-section-highlight");
+
+            timer = setTimeout(function () {
+                section.classList.remove("arche-section-highlight");
+            }, 1500);
+        });
+    });
 });
