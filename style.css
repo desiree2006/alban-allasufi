@@ -617,6 +617,8 @@ header {
     padding: 65px 40px;
 }
 
+/* ---------- COMPUTER: le tre schede ---------- */
+
 .cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -638,51 +640,140 @@ header {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Contenitore delle immagini che cambiano da sole */
 .thumb {
+    position: relative;
     height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
     background: #efede7;
 }
 
-.miniHouse {
-    position: relative;
-    width: 150px;
-    height: 120px;
-    background: #ddd6c9;
-    border: 3px solid #6c675d;
-    transform: skewY(-8deg) rotate(-3deg);
-    box-shadow: 12px 12px 0 #c5bdaf;
+.slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.slider img.active {
+    opacity: 1;
 }
 
 .cardbody {
     padding: 22px;
 }
 
-.cardbody h3 {
-    margin: 0 0 12px;
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 14px;
+.card-text {
     color: var(--muted);
-    font-size: 11px;
+    font-size: 13px;
+    line-height: 1.8;
 }
 
-.price {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid var(--line);
-    font-size: 20px;
-    font-weight: 600;
+/* =========================================
+   TELEFONO: PIANTA CHE SI ALZA
+   (le schede spariscono e compaiono i blocchi 3D
+   creati dal JavaScript)
+========================================= */
+
+.pj-story {
+    display: none;
 }
 
+@media (max-width: 700px) {
+
+    #progetti .cards {
+        display: none;
+    }
+
+    .pj-story {
+        display: block;
+    }
+
+    .pj-block {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    /* Riquadro fermo mentre scorri: taglia tutto ciò che esce */
+    .pj-stage {
+        position: sticky;
+        top: 112px;
+        height: calc(100vh - 130px);
+        height: calc(100svh - 130px);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    /* Spazio 3D: la prospettiva fa "stendere" le immagini a terra */
+    .pj-view {
+        position: relative;
+        flex: 0 0 46%;
+        perspective: 800px;
+        perspective-origin: 50% 45%;
+    }
+
+    .pj-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: contain;
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        will-change: transform, opacity;
+    }
+
+    .pj-slide:first-child {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Testo che si scrive da solo (sempre sopra le immagini) */
+    .pj-text {
+        position: relative;
+        z-index: 200;
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 2px;
+    }
+
+    .pj-label {
+        color: var(--muted);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .pj-body {
+        margin: 0;
+        color: #45433e;
+        font-size: 12.5px;
+        line-height: 1.65;
+        overflow-wrap: anywhere;
+    }
+
+    .pj-body.typing::after {
+        content: "▍";
+        margin-left: 1px;
+        animation: pjBlink 0.7s steps(1) infinite;
+    }
+}
+
+@keyframes pjBlink {
+    50% { opacity: 0; }
+}
 /* ==================================================
    11. GALLERIA ORIZZONTALE INTERATTIVA
    Una sola immagine visibile alla volta
