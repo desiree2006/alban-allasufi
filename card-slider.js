@@ -183,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
     x0 = null;
   }, { passive: true });
 })();
+
 /* =====================================
    PROGETTI IN EVIDENZA: PIANTA CHE SI ALZA (solo telefono)
    Legge immagini e testi dalle schede in .cards
@@ -194,12 +195,53 @@ document.addEventListener("DOMContentLoaded", function () {
   var SCROLL = 0.62;   // più alto = scroll più lungo (più lento)
   var CHARS = 3;       // lettere scritte a ogni passo
   var DELAY = 16;      // millisecondi tra un passo e l'altro
+  var DEBUG = true;    // metti false quando tutto funziona: toglie la striscia rossa
 
   var section = document.getElementById("progetti");
   if (!section) return;
 
   var cards = section.querySelectorAll(".card-slider");
   if (!cards.length) return;
+
+  /* ---------- recupero immagini con estensione diversa ---------- */
+
+  var EXT = [".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG", ".webp"];
+  var missing = [];
+
+  function report(name) {
+    if (!DEBUG) return;
+    if (missing.indexOf(name) < 0) missing.push(name);
+    var bar = document.getElementById("img-debug");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "img-debug";
+      bar.style.cssText =
+        "position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#b00020;" +
+        "color:#fff;font:12px/1.4 Arial,sans-serif;padding:8px 10px";
+      document.body.appendChild(bar);
+    }
+    bar.textContent = "Immagini non trovate: " + missing.join(" · ");
+  }
+
+  // Se l'immagine non si carica, prova le altre estensioni
+  function rescue(img) {
+    var original = img.getAttribute("src") || "";
+    var m = original.match(/\.[a-zA-Z0-9]+$/);
+    var ext = m ? m[0] : "";
+    var base = ext ? original.slice(0, -ext.length) : original;
+    var list = EXT.filter(function (e) { return e !== ext; });
+    var tries = 0;
+
+    function next() {
+      if (tries >= list.length) { report(original); return; }
+      img.src = base + list[tries++];
+    }
+
+    img.addEventListener("error", next);
+    if (img.complete && img.naturalWidth === 0) next();
+  }
+
+  Array.prototype.forEach.call(section.querySelectorAll(".slider img"), rescue);
 
   /* ---------- costruzione dei blocchi dalle schede ---------- */
 
@@ -227,8 +269,9 @@ document.addEventListener("DOMContentLoaded", function () {
     Array.prototype.forEach.call(imgs, function (im) {
       var s = document.createElement("img");
       s.className = "pj-slide";
-      s.src = im.currentSrc || im.src;     // funziona anche con spazi e parentesi nel nome
       s.alt = im.getAttribute("alt") || "";
+      s.src = im.getAttribute("src");
+      rescue(s);
       view.appendChild(s);
     });
 
